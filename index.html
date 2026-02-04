@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>City Hospital</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>City Hospital</h1>
+    <p>Care • Cure • Comfort</p>
+</header>
+
+<nav>
+    <a href="#departments">Departments</a>
+    <a href="#appointment">Appointment</a>
+</nav>
+
+<!-- Departments -->
+<section id="departments">
+    <h2>Our Departments</h2>
+
+    <div class="cards">
+        <div class="card">Cardiology</div>
+        <div class="card">Neurology</div>
+        <div class="card">Orthopedics</div>
+        <div class="card">Pediatrics</div>
+        <div class="card">General Medicine</div>
+    </div>
+</section>
+
+<!-- Appointment Form -->
+<section id="appointment">
+    <h2>Book Appointment</h2>
+
+    <form id="appointmentForm">
+        <input type="text" id="name" placeholder="Patient Name" required>
+        <input type="number" id="age" placeholder="Age" required>
+        <input type="date" id="date" required>
+
+        <select id="department" required>
+            <option value="">Select Department</option>
+            <option>Cardiology</option>
+            <option>Neurology</option>
+            <option>Orthopedics</option>
+            <option>Pediatrics</option>
+        </select>
+
+        <button type="submit">Submit</button>
+    </form>
+</section>
+
+<footer>
+    <p>© 2026 City Hospital</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
