@@ -1,70 +1,156 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background: #f4f4f4;
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    box-sizing: border-box;
 }
 
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background: #f8fafc;
+    color: #333;
+}
+
+/* Header */
 header {
-    background: #0077b6;
+    background: linear-gradient(135deg, #0077b6, #00b4d8);
     color: white;
     text-align: center;
-    padding: 20px;
+    padding: 40px 20px;
 }
 
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+header p {
+    margin-top: 8px;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Navbar */
 nav {
-    background: #023e8a;
-    padding: 10px;
+    background: white;
+    padding: 12px;
     text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 nav a {
-    color: white;
-    margin: 0 15px;
+    color: #0077b6;
+    margin: 0 18px;
     text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
 }
 
+nav a:hover {
+    color: #023e8a;
+}
+
+/* Sections */
 section {
-    padding: 30px;
+    padding: 60px 8%;
 }
 
+section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2rem;
+    color: #023e8a;
+}
+
+/* Department Cards */
 .cards {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
 }
 
 .card {
     background: white;
-    padding: 20px;
-    width: 180px;
+    padding: 30px 20px;
     text-align: center;
-    border-radius: 5px;
-    box-shadow: 0 0 5px gray;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    font-weight: 600;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+/* Appointment Form */
 form {
-    max-width: 400px;
+    max-width: 450px;
+    margin: auto;
     background: white;
-    padding: 20px;
-    border-radius: 5px;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
 }
 
-form input, form select, form button {
+form input,
+form select {
     width: 100%;
-    margin: 10px 0;
-    padding: 10px;
+    margin: 12px 0;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
 }
 
+form input:focus,
+form select:focus {
+    outline: none;
+    border-color: #0077b6;
+}
+
+/* Button */
 button {
-    background: #0077b6;
+    width: 100%;
+    padding: 14px;
+    margin-top: 15px;
+    background: linear-gradient(135deg, #0077b6, #00b4d8);
     color: white;
     border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* About Page */
+#about p, 
+#about li {
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+#about ul {
+    padding-left: 20px;
+}
+
+/* Footer */
 footer {
-    text-align: center;
     background: #023e8a;
     color: white;
-    padding: 10px;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9rem;
+    margin-top: 40px;
 }
