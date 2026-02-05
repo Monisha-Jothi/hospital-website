@@ -154,3 +154,30 @@ footer {
     font-size: 0.9rem;
     margin-top: 40px;
 }
+.card {
+    text-decoration: none;
+    color: inherit;
+}
+.department-page {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.department-page h2 {
+    color: #0b4c8c;
+}
+
+.department-page ul li {
+    margin: 8px 0;
+}
+
+.dept-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #0b4c8c;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
