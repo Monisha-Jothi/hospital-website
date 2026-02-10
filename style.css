@@ -1027,3 +1027,73 @@ body {
         grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
     }
 }
+/* ===== HARD RESET + PERFECT GRID FIX ===== */
+
+.departments-section * {
+    all: unset;
+}
+
+.departments-section {
+    display: block;
+    padding: 80px 20px;
+    background: #f7fbff;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.departments-section .container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    font-size: 36px;
+    color: #003366;
+    margin-bottom: 10px;
+}
+
+.section-header p {
+    color: #555;
+}
+
+.departments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.department-card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: 0.35s;
+    cursor: pointer;
+}
+
+.department-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+.card-icon {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.department-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #003366;
+}
+
+.department-card p {
+    font-size: 14px;
+    color: #555;
+}
+
