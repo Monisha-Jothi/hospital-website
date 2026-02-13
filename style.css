@@ -805,6 +805,299 @@ body {
 
 .footer-links a:hover {
     color: white;
+<<<<<<< HEAD
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 55px;
+    height: 55px;
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Scroll animations */
+[data-aos] {
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+[data-aos="fade-up"] {
+    transform: translateY(50px);
+}
+
+[data-aos="fade-down"] {
+    transform: translateY(-50px);
+}
+
+[data-aos="fade-left"] {
+    transform: translateX(50px);
+}
+
+[data-aos="fade-right"] {
+    transform: translateX(-50px);
+}
+
+[data-aos="zoom-in"] {
+    transform: scale(0.8);
+}
+
+[data-aos].aos-animate {
+    opacity: 1;
+    transform: translate(0) scale(1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .header-content h1 {
+        font-size: 4rem;
+    }
+    
+    .appointment-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .floating-stats {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 3rem;
+    }
+    
+    .tagline {
+        font-size: 1.2rem;
+    }
+    
+    .floating-stats {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .section-header h2 {
+        font-size: 2.5rem;
+    }
+    
+    .departments-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .appointment-form-container {
+        padding: 30px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .stat-item {
+        padding: 20px 30px;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+}
+/* ===== FIXED PROFESSIONAL DEPARTMENT GRID ===== */
+
+.departments-section {
+    padding: 80px 0;
+    background: #f8fbff;
+}
+
+.departments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    margin-top: 50px;
+}
+
+.department-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 30px 22px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.department-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 18px 45px rgba(0,0,0,0.12);
+}
+
+.card-background {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #0077b6, #00b4d8);
+    opacity: 0;
+    transition: 0.4s;
+    z-index: 0;
+}
+
+.department-card:hover .card-background {
+    opacity: 0.08;
+}
+
+.card-icon {
+    font-size: 42px;
+    margin-bottom: 15px;
+    z-index: 1;
+    position: relative;
+}
+
+.department-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    z-index: 1;
+    position: relative;
+}
+
+.department-card p {
+    font-size: 14px;
+    color: #555;
+    z-index: 1;
+    position: relative;
+}
+
+.card-arrow {
+    margin-top: 15px;
+    font-size: 22px;
+    color: #0077b6;
+    transition: 0.3s;
+    z-index: 1;
+    position: relative;
+}
+
+.department-card:hover .card-arrow {
+    transform: translateX(6px);
+}
+
+/* Responsive fix */
+@media(max-width:768px){
+    .departments-grid{
+        grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+    }
+}
+/* ===== HARD RESET + PERFECT GRID FIX ===== */
+
+.departments-section * {
+    all: unset;
+}
+
+.departments-section {
+    display: block;
+    padding: 80px 20px;
+    background: #f7fbff;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.departments-section .container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    font-size: 36px;
+    color: #003366;
+    margin-bottom: 10px;
+}
+
+.section-header p {
+    color: #555;
+}
+
+.departments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.department-card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: 0.35s;
+    cursor: pointer;
+}
+
+.department-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+.card-icon {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.department-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #003366;
+}
+
+.department-card p {
+    font-size: 14px;
+    color: #555;
+=======
+>>>>>>> 0f3d668e73e2cd0259fe2671cf38b41c6d6ad52f
 }
 
 /* Back to Top Button */
@@ -1096,3 +1389,4 @@ body {
     font-size: 14px;
     color: #555;
 }
+
