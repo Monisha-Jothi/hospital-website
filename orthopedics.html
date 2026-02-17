@@ -5,245 +5,236 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orthopedics Department - MediCare Excellence</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .dept-page-hero { position:relative; padding:8rem 0 4rem; overflow:hidden; min-height:380px; display:flex; align-items:flex-end; }
+        .dept-hero-bg { position:absolute; inset:0; background-image:url('https://images.unsplash.com/photo-1583912267550-d974b8c9e779?w=1600&q=80'); background-size:cover; background-position:center; }
+        .dept-hero-overlay { position:absolute; inset:0; background:linear-gradient(to right,rgba(5,46,22,0.92) 40%,rgba(5,46,22,0.6) 100%); }
+        .dept-hero-content { position:relative; z-index:1; padding-bottom:3rem; }
+        .dept-hero-tag { display:inline-flex; align-items:center; gap:0.5rem; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.25); color:white; font-size:0.85rem; font-weight:600; padding:0.4rem 1rem; border-radius:50px; margin-bottom:1.25rem; }
+        .dept-hero-content h1 { font-family:'Playfair Display',serif; font-size:clamp(2.2rem,5vw,3.5rem); color:white; margin-bottom:1rem; }
+        .dept-hero-content p { color:rgba(255,255,255,0.85); max-width:600px; font-size:1.05rem; }
+        .highlights { padding:3rem 0; background:var(--bg-light); border-bottom:1px solid var(--border); }
+        .highlights-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem; }
+        .highlight-card { background:white; border-radius:var(--radius); padding:1.5rem; display:flex; align-items:center; gap:1rem; border:1.5px solid var(--border); transition:all var(--transition); }
+        .highlight-card:hover { transform:translateY(-4px); box-shadow:var(--shadow); }
+        .hl-icon { width:48px; height:48px; flex-shrink:0; border-radius:14px; background:linear-gradient(135deg,#0ea5e9,#0284c7); display:flex; align-items:center; justify-content:center; font-size:1.25rem; color:white; }
+        .hl-text strong { display:block; font-size:1.1rem; font-weight:700; color:var(--text-dark); }
+        .hl-text span { font-size:0.8rem; color:var(--text-light); }
+        .services-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin:1.5rem 0; }
+        .service-item { display:flex; align-items:flex-start; gap:0.75rem; background:var(--bg-light); border-radius:10px; padding:1rem; transition:all 0.2s; }
+        .service-item:hover { background:rgba(14,165,233,0.08); }
+        .service-item i { color:#0ea5e9; margin-top:0.15rem; flex-shrink:0; }
+        .service-item span { font-size:0.9rem; color:var(--text-mid); font-weight:500; }
+        .team-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.25rem; margin:1.5rem 0; }
+        .team-card { display:flex; gap:1rem; align-items:center; background:white; border-radius:var(--radius); padding:1rem; border:1.5px solid var(--border); transition:all 0.2s; }
+        .team-card:hover { border-color:#0ea5e9; box-shadow:var(--shadow-sm); }
+        .team-card img { width:60px; height:60px; border-radius:50%; object-fit:cover; flex-shrink:0; }
+        .team-card strong { display:block; font-size:0.92rem; color:var(--text-dark); }
+        .team-card span { font-size:0.78rem; color:var(--text-light); }
+        .dept-gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:0.75rem; margin:1.5rem 0; }
+        .dept-gallery img { border-radius:var(--radius); height:140px; object-fit:cover; }
+        .procedure-cards { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin:1.5rem 0; }
+        .proc-card { background:white; border:1.5px solid var(--border); border-radius:var(--radius); padding:1.25rem; text-align:center; transition:all 0.3s; }
+        .proc-card:hover { border-color:#0ea5e9; transform:translateY(-4px); box-shadow:var(--shadow); }
+        .proc-card i { font-size:2rem; color:#0ea5e9; margin-bottom:0.75rem; display:block; }
+        .proc-card h4 { font-size:0.95rem; font-weight:700; color:var(--text-dark); margin-bottom:0.4rem; }
+        .proc-card p { font-size:0.8rem; color:var(--text-light); line-height:1.5; }
+        @media(max-width:768px){ .highlights-grid{grid-template-columns:repeat(2,1fr);} .services-grid{grid-template-columns:1fr;} .team-grid{grid-template-columns:1fr;} .dept-gallery{grid-template-columns:repeat(2,1fr);} .procedure-cards{grid-template-columns:1fr;} }
+    </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="logo">
-                <div class="logo-icon">M</div>
-                <span>MediCare Excellence</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li class="dropdown">
-                    <a href="#departments" class="active">Departments</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="cardiology.html">Cardiology</a></li>
-                        <li><a href="neurology.html">Neurology</a></li>
-                        <li><a href="orthopedics.html">Orthopedics</a></li>
-                        <li><a href="pediatrics.html">Pediatrics</a></li>
-                        <li><a href="general-medicine.html">General Medicine</a></li>
-                    </ul>
-                </li>
-                <li><a href="#contact">Contact</a></li>
+<div class="modal-overlay" id="appointmentModal">
+    <div class="modal">
+        <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+        <div class="modal-header">
+            <div class="modal-icon"><i class="fas fa-calendar-check"></i></div>
+            <h2>Book an Appointment</h2>
+            <p>Fill in your details and we'll confirm within 2 hours</p>
+        </div>
+        <form class="modal-form" onsubmit="submitForm(event)">
+            <div class="form-row">
+                <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your full name" required></div>
+                <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+91 98765 43210" required></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label>Email</label><input type="email" placeholder="you@email.com"></div>
+                <div class="form-group"><label>Department</label><select><option>Orthopedics</option><option>Cardiology</option><option>Neurology</option><option>Pediatrics</option><option>General Medicine</option></select></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label>Preferred Date</label><input type="date" required></div>
+                <div class="form-group"><label>Preferred Time</label><select><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option></select></div>
+            </div>
+            <div class="form-group"><label>Symptoms (optional)</label><textarea placeholder="Describe your symptoms..."></textarea></div>
+            <button type="submit" class="btn-primary large full-width"><i class="fas fa-check-circle"></i> Confirm Appointment</button>
+        </form>
+    </div>
+</div>
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span>Appointment booked! We'll confirm shortly.</span></div>
+
+<nav class="navbar" id="navbar">
+    <div class="container">
+        <a href="index.html" class="logo"><div class="logo-icon"><i class="fas fa-heartbeat"></i></div><span>MediCare <em>Excellence</em></span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+            <li class="dropdown"><a href="#" class="active">Departments <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="cardiology.html"><i class="fas fa-heart"></i> Cardiology</a></li>
+                    <li><a href="neurology.html"><i class="fas fa-brain"></i> Neurology</a></li>
+                    <li><a href="orthopedics.html"><i class="fas fa-bone"></i> Orthopedics</a></li>
+                    <li><a href="pediatrics.html"><i class="fas fa-baby"></i> Pediatrics</a></li>
+                    <li><a href="general-medicine.html"><i class="fas fa-stethoscope"></i> General Medicine</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html#doctors">Doctors</a></li><li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-right"><a href="tel:5551234567" class="nav-phone"><i class="fas fa-phone"></i> (555) 123-4567</a><button class="btn-primary" onclick="openModal()">Book Appointment</button></div>
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<section class="dept-page-hero">
+    <div class="dept-hero-bg"></div><div class="dept-hero-overlay"></div>
+    <div class="container"><div class="dept-hero-content fade-in-up">
+        <div class="dept-hero-tag"><i class="fas fa-bone"></i> Orthopedics Department</div>
+        <h1>Move Better, <br>Live Better</h1>
+        <p>Comprehensive musculoskeletal care — from sports injuries to joint replacements — using the most advanced surgical techniques and rehabilitation programs.</p>
+    </div></div>
+</section>
+
+<section class="highlights">
+    <div class="container"><div class="highlights-grid">
+        <div class="highlight-card reveal-text"><div class="hl-icon"><i class="fas fa-user-md"></i></div><div class="hl-text"><strong>15 Surgeons</strong><span>Board-Certified Orthopedists</span></div></div>
+        <div class="highlight-card reveal-text delay-1"><div class="hl-icon"><i class="fas fa-procedures"></i></div><div class="hl-text"><strong>3,000+</strong><span>Surgeries Per Year</span></div></div>
+        <div class="highlight-card reveal-text delay-2"><div class="hl-icon"><i class="fas fa-robot"></i></div><div class="hl-text"><strong>Robotic</strong><span>Assisted Joint Replacement</span></div></div>
+        <div class="highlight-card reveal-text delay-3"><div class="hl-icon"><i class="fas fa-star"></i></div><div class="hl-text"><strong>99%</strong><span>Joint Replacement Success</span></div></div>
+    </div></div>
+</section>
+
+<section class="content-section">
+    <div class="container"><div class="content-grid">
+        <div class="main-content">
+            <div class="dept-gallery reveal-text">
+                <img src="https://images.unsplash.com/photo-1583912267550-d974b8c9e779?w=400&q=80" alt="Surgery" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=400&q=80" alt="X-Ray" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=400&q=80" alt="Rehab" loading="lazy">
+            </div>
+
+            <h2 class="reveal-text delay-1">Expert Musculoskeletal Care</h2>
+            <p class="reveal-text delay-2">Our Orthopedics Department specializes in the diagnosis, treatment, and prevention of conditions affecting bones, joints, ligaments, tendons, and muscles. From sports injuries to complex joint replacements, our team delivers outstanding outcomes using the latest minimally invasive techniques.</p>
+            <p class="reveal-text delay-3">We believe recovery begins before surgery — with accurate diagnosis, careful planning, and a comprehensive rehabilitation program to get you back to the life you love.</p>
+
+            <h3 class="reveal-text">Our Orthopedic Services</h3>
+            <div class="services-grid reveal-text delay-1">
+                <div class="service-item"><i class="fas fa-bone"></i><span>Joint Replacement (Hip, Knee, Shoulder)</span></div>
+                <div class="service-item"><i class="fas fa-cut"></i><span>Arthroscopic & Minimally Invasive Surgery</span></div>
+                <div class="service-item"><i class="fas fa-running"></i><span>Sports Medicine & Athletic Injuries</span></div>
+                <div class="service-item"><i class="fas fa-x-ray"></i><span>Fracture Care & Trauma Surgery</span></div>
+                <div class="service-item"><i class="fas fa-spa"></i><span>Spine Surgery & Spinal Disorders</span></div>
+                <div class="service-item"><i class="fas fa-hand-paper"></i><span>Hand & Wrist Surgery</span></div>
+                <div class="service-item"><i class="fas fa-shoe-prints"></i><span>Foot & Ankle Surgery</span></div>
+                <div class="service-item"><i class="fas fa-dna"></i><span>Cartilage Restoration & PRP Therapy</span></div>
+                <div class="service-item"><i class="fas fa-child"></i><span>Pediatric Orthopedics</span></div>
+                <div class="service-item"><i class="fas fa-dumbbell"></i><span>Physical Therapy & Rehabilitation</span></div>
+            </div>
+
+            <h3 class="reveal-text">Advanced Surgical Procedures</h3>
+            <div class="procedure-cards reveal-text delay-1">
+                <div class="proc-card"><i class="fas fa-robot"></i><h4>Robotic-Assisted Surgery</h4><p>Precision robotic technology for joint replacements with faster recovery and better outcomes</p></div>
+                <div class="proc-card"><i class="fas fa-circle-notch"></i><h4>Arthroscopic Surgery</h4><p>Minimally invasive procedures with small incisions, less pain, and quicker return to activity</p></div>
+                <div class="proc-card"><i class="fas fa-spine"></i><h4>Minimally Invasive Spine</h4><p>Computer-navigated spine surgery for precision and minimal tissue disruption</p></div>
+                <div class="proc-card"><i class="fas fa-tint"></i><h4>Orthobiologics</h4><p>PRP and stem cell therapy to harness your body's own healing capabilities</p></div>
+            </div>
+
+            <h3 class="reveal-text">Conditions We Treat</h3>
+            <ul class="reveal-text delay-1">
+                <li>Arthritis — osteoarthritis and rheumatoid arthritis</li>
+                <li>ACL tears, meniscus tears, and ligament injuries</li>
+                <li>Rotator cuff tears and shoulder instability</li>
+                <li>Herniated discs, spinal stenosis, and scoliosis</li>
+                <li>Fractures, dislocations, and sports injuries</li>
+                <li>Carpal tunnel syndrome and plantar fasciitis</li>
+                <li>Bunions, hammertoes, and foot deformities</li>
+                <li>Osteoporosis and bone density disorders</li>
             </ul>
-            <button class="btn-primary">Book Appointment</button>
-        </div>
-    </nav>
 
-    <section class="page-hero">
-        <div class="page-hero-content">
-            <h1 class="fade-in-up">🦴 Orthopedics Department</h1>
-            <p class="fade-in-up delay-1">Comprehensive musculoskeletal care from injury prevention to surgical excellence and complete rehabilitation</p>
-        </div>
-    </section>
-
-    <section class="content-section">
-        <div class="container">
-            <div class="content-grid">
-                <div class="main-content">
-                    <h2 class="reveal-text">Expert Musculoskeletal Care</h2>
-                    <p class="reveal-text delay-1">Our Orthopedics Department specializes in the diagnosis, treatment, and prevention of conditions affecting your bones, joints, ligaments, tendons, and muscles. Whether you're dealing with a sports injury, chronic joint pain, or need a joint replacement, our team of board-certified orthopedic surgeons provides expert care using the latest techniques.</p>
-                    
-                    <p class="reveal-text delay-2">We believe in a comprehensive approach to orthopedic care that begins with accurate diagnosis, considers all treatment options from conservative to surgical, and includes comprehensive rehabilitation to help you return to the activities you love.</p>
-
-                    <h3 class="reveal-text delay-3">Our Orthopedic Services</h3>
-                    <p class="reveal-text delay-4">We offer a full range of orthopedic services to address all musculoskeletal conditions:</p>
-                    
-                    <ul class="reveal-text delay-5">
-                        <li>Comprehensive orthopedic evaluations and second opinions</li>
-                        <li>Advanced diagnostic imaging including X-ray, MRI, and CT scans</li>
-                        <li>Sports medicine and athletic injury treatment</li>
-                        <li>Joint replacement surgery (hip, knee, shoulder, ankle)</li>
-                        <li>Arthroscopic and minimally invasive surgery</li>
-                        <li>Fracture care and trauma surgery</li>
-                        <li>Spine surgery and spinal disorders treatment</li>
-                        <li>Hand and wrist surgery</li>
-                        <li>Foot and ankle surgery</li>
-                        <li>Shoulder and elbow surgery</li>
-                        <li>Pediatric orthopedics</li>
-                        <li>Arthritis management and treatment</li>
-                        <li>Osteoporosis screening and treatment</li>
-                        <li>Physical therapy and rehabilitation</li>
-                        <li>Orthobiologics including PRP and stem cell therapy</li>
-                        <li>Cartilage restoration procedures</li>
-                    </ul>
-
-                    <h3 class="reveal-text delay-1">Conditions We Treat</h3>
-                    <p class="reveal-text delay-2">Our orthopedic specialists treat a wide variety of musculoskeletal conditions:</p>
-                    
-                    <ul class="reveal-text delay-3">
-                        <li>Arthritis (osteoarthritis, rheumatoid arthritis)</li>
-                        <li>ACL tears and other ligament injuries</li>
-                        <li>Meniscus tears</li>
-                        <li>Rotator cuff tears</li>
-                        <li>Tennis elbow and golfer's elbow</li>
-                        <li>Carpal tunnel syndrome</li>
-                        <li>Plantar fasciitis</li>
-                        <li>Herniated discs and spinal stenosis</li>
-                        <li>Fractures and broken bones</li>
-                        <li>Dislocations</li>
-                        <li>Bursitis and tendinitis</li>
-                        <li>Bunions and hammertoes</li>
-                        <li>Hip labral tears</li>
-                        <li>Bone spurs</li>
-                        <li>Scoliosis and spinal deformities</li>
-                        <li>Sports-related injuries</li>
-                        <li>Work-related injuries</li>
-                        <li>Chronic pain conditions</li>
-                    </ul>
-
-                    <h3 class="reveal-text delay-4">Advanced Surgical Techniques</h3>
-                    <p class="reveal-text delay-5">Our orthopedic surgeons are trained in the latest surgical techniques to minimize recovery time and maximize outcomes:</p>
-                    
-                    <ul class="reveal-text delay-1">
-                        <li>Minimally invasive arthroscopic procedures</li>
-                        <li>Robotic-assisted joint replacement surgery</li>
-                        <li>Computer-navigated spine surgery</li>
-                        <li>Anterior approach hip replacement</li>
-                        <li>Partial knee replacement</li>
-                        <li>Reverse shoulder replacement</li>
-                        <li>Minimally invasive spinal fusion</li>
-                        <li>Cartilage transplantation</li>
-                        <li>Ligament reconstruction</li>
-                        <li>Tendon repair and transfer</li>
-                    </ul>
-
-                    <h3 class="reveal-text delay-2">Joint Replacement Center</h3>
-                    <p class="reveal-text delay-3">Our Joint Replacement Center is dedicated to helping patients with severe arthritis or joint damage regain mobility and quality of life. We perform hundreds of successful joint replacements each year with excellent outcomes.</p>
-                    
-                    <p class="reveal-text delay-4">Features of our Joint Replacement program include:</p>
-                    <ul class="reveal-text delay-5">
-                        <li>Pre-operative education classes</li>
-                        <li>Minimally invasive surgical techniques</li>
-                        <li>Enhanced recovery protocols</li>
-                        <li>Dedicated orthopedic floor with specialized nursing care</li>
-                        <li>Comprehensive physical therapy</li>
-                        <li>Same-day and outpatient joint replacement options</li>
-                        <li>Long-term follow-up care</li>
-                    </ul>
-
-                    <h3 class="reveal-text delay-1">Sports Medicine</h3>
-                    <p class="reveal-text delay-2">Our sports medicine specialists work with athletes of all levels, from weekend warriors to professional competitors. We provide comprehensive care for sports-related injuries and work to get you back in the game safely and quickly.</p>
-                    
-                    <p class="reveal-text delay-3">Services include injury prevention assessments, performance optimization, acute injury treatment, surgical repair when necessary, and sport-specific rehabilitation programs.</p>
-
-                    <h3 class="reveal-text delay-4">Rehabilitation Services</h3>
-                    <p class="reveal-text delay-5">Recovery doesn't end when you leave the operating room. Our comprehensive rehabilitation program is designed to help you regain strength, mobility, and function. Our physical therapists work closely with your surgeon to create personalized recovery plans.</p>
-                    
-                    <p class="reveal-text delay-1">We offer on-site physical therapy with state-of-the-art equipment, aquatic therapy, occupational therapy, and home exercise programs to support your recovery journey.</p>
-
-                    <h3 class="reveal-text delay-2">Meet Our Orthopedic Team</h3>
-                    <p class="reveal-text delay-3">Our team includes board-certified orthopedic surgeons with fellowship training in specialized areas such as sports medicine, joint replacement, spine surgery, hand surgery, and foot and ankle surgery. Many of our surgeons serve as team physicians for local schools and sports organizations.</p>
-                    
-                    <p class="reveal-text delay-4">Supporting our surgeons is a dedicated team of physician assistants, nurse practitioners, physical therapists, and specialized nursing staff, all committed to providing exceptional orthopedic care.</p>
-                </div>
-
-                <div class="sidebar">
-                    <div class="info-box reveal-text">
-                        <h3>Quick Information</h3>
-                        <ul>
-                            <li><strong>Department Head:</strong> Dr. Robert Martinez, MD</li>
-                            <li><strong>Specialists:</strong> 15 orthopedic surgeons</li>
-                            <li><strong>Hours:</strong> Mon-Fri 7AM-6PM</li>
-                            <li><strong>Emergency:</strong> 24/7 trauma surgery</li>
-                            <li><strong>Location:</strong> 2nd Floor, South Wing</li>
-                        </ul>
-                    </div>
-
-                    <div class="info-box reveal-text delay-1">
-                        <h3>When to See an Orthopedist</h3>
-                        <ul>
-                            <li>Joint pain or stiffness</li>
-                            <li>Limited range of motion</li>
-                            <li>Sports injury</li>
-                            <li>Chronic back or neck pain</li>
-                            <li>Bone fracture</li>
-                            <li>Swelling or instability</li>
-                            <li>Difficulty walking</li>
-                        </ul>
-                    </div>
-
-                    <div class="info-box reveal-text delay-2">
-                        <h3>Specialties</h3>
-                        <ul>
-                            <li>Joint Replacement</li>
-                            <li>Sports Medicine</li>
-                            <li>Spine Surgery</li>
-                            <li>Hand & Wrist</li>
-                            <li>Foot & Ankle</li>
-                            <li>Shoulder & Elbow</li>
-                            <li>Trauma Surgery</li>
-                            <li>Pediatric Orthopedics</li>
-                        </ul>
-                    </div>
-
-                    <div class="info-box reveal-text delay-3">
-                        <h3>Schedule Your Appointment</h3>
-                        <p>Get back to doing what you love with expert orthopedic care.</p>
-                        <button class="btn-primary">Book Now</button>
-                    </div>
-                </div>
+            <h3 class="reveal-text">Meet Our Orthopedic Team</h3>
+            <div class="team-grid reveal-text delay-1">
+                <div class="team-card"><img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=200&q=80" alt="Dr. Robert Martinez"><div><strong>Dr. Robert Martinez, MD</strong><span>Head of Orthopedics · Joint Replacement · 20 yrs</span></div></div>
+                <div class="team-card"><img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=200&q=80" alt="Dr. Kevin Park"><div><strong>Dr. Kevin Park, MD</strong><span>Sports Medicine Specialist · 14 yrs</span></div></div>
+                <div class="team-card"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80" alt="Dr. Priya Sharma"><div><strong>Dr. Priya Sharma, MD</strong><span>Spine Surgery Specialist · 11 yrs</span></div></div>
+                <div class="team-card"><img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200&q=80" alt="Dr. Lisa Chen"><div><strong>Dr. Lisa Chen, MD</strong><span>Hand & Wrist Surgery · 9 yrs</span></div></div>
             </div>
         </div>
-    </section>
 
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2 class="reveal-text">Move Better, Live Better</h2>
-                <p class="reveal-text delay-1">Don't let pain hold you back. Schedule a consultation with our orthopedic specialists today.</p>
-                <button class="btn-primary large reveal-text delay-2">Schedule Consultation</button>
+        <div class="sidebar">
+            <div class="info-box reveal-text">
+                <h3>Quick Information</h3>
+                <ul>
+                    <li><strong>Department Head:</strong> Dr. Robert Martinez</li>
+                    <li><strong>Specialists:</strong> 15 orthopedic surgeons</li>
+                    <li><strong>Hours:</strong> Mon–Fri 7AM–6PM</li>
+                    <li><strong>Emergency:</strong> 24/7 trauma surgery</li>
+                    <li><strong>Location:</strong> 2nd Floor, South Wing</li>
+                </ul>
+            </div>
+            <div class="info-box reveal-text delay-1">
+                <h3>When to See an Orthopedist</h3>
+                <ul>
+                    <li>Joint pain or stiffness</li>
+                    <li>Limited range of motion</li>
+                    <li>Sports or work injury</li>
+                    <li>Chronic back or neck pain</li>
+                    <li>Bone fracture</li>
+                    <li>Difficulty walking</li>
+                </ul>
+            </div>
+            <div class="info-box reveal-text delay-2">
+                <h3>Sub-Specialties</h3>
+                <ul>
+                    <li>Joint Replacement</li>
+                    <li>Sports Medicine</li>
+                    <li>Spine Surgery</li>
+                    <li>Hand &amp; Wrist</li>
+                    <li>Foot &amp; Ankle</li>
+                    <li>Shoulder &amp; Elbow</li>
+                    <li>Trauma Surgery</li>
+                    <li>Pediatric Orthopedics</li>
+                </ul>
+            </div>
+            <div class="info-box reveal-text delay-3" style="background:linear-gradient(135deg,#064e3b,#065f46);border-color:transparent;">
+                <h3 style="color:white;">Book Your Appointment</h3>
+                <p style="color:rgba(255,255,255,0.8)">Get back to doing what you love with expert orthopedic care.</p>
+                <button class="btn-white" onclick="openModal()" style="margin-top:1.25rem;width:100%;justify-content:center;"><i class="fas fa-calendar-plus"></i> Book Now</button>
             </div>
         </div>
-    </section>
+    </div></div>
+</section>
 
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="logo">
-                        <div class="logo-icon">M</div>
-                        <span>MediCare Excellence</span>
-                    </div>
-                    <p>Providing exceptional healthcare services with compassion and excellence since 1995.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="index.html#departments">Departments</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">News</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Departments</h4>
-                    <ul>
-                        <li><a href="cardiology.html">Cardiology</a></li>
-                        <li><a href="neurology.html">Neurology</a></li>
-                        <li><a href="orthopedics.html">Orthopedics</a></li>
-                        <li><a href="pediatrics.html">Pediatrics</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li>123 Medical Plaza Drive</li>
-                        <li>Healthcare City, HC 12345</li>
-                        <li>Phone: (555) 123-4567</li>
-                        <li>Email: info@medicare.com</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 MediCare Excellence. All rights reserved.</p>
-            </div>
+<section class="cta-section">
+    <div class="cta-bg" style="background-image:url('https://images.unsplash.com/photo-1583912267550-d974b8c9e779?w=1600&q=80')"></div>
+    <div class="cta-overlay"></div>
+    <div class="container"><div class="cta-content reveal-text">
+        <h2>Move Without Pain Again</h2>
+        <p>Don't let pain hold you back. Schedule a consultation with our orthopedic specialists today.</p>
+        <div class="cta-actions">
+            <button class="btn-white large" onclick="openModal()"><i class="fas fa-calendar-check"></i> Schedule Consultation</button>
+            <a href="tel:5551234567" class="btn-outline-white large"><i class="fas fa-phone"></i> (555) 123-4567</a>
         </div>
-    </footer>
+    </div></div>
+</section>
 
-    <script src="script.js"></script>
+<footer id="contact">
+    <div class="footer-top"><div class="container"><div class="footer-grid">
+        <div class="footer-brand"><a href="index.html" class="logo"><div class="logo-icon"><i class="fas fa-heartbeat"></i></div><span>MediCare <em>Excellence</em></span></a><p>Providing exceptional healthcare services with compassion and innovation since 1995.</p><div class="footer-socials"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div></div>
+        <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li><li><a href="index.html#departments"><i class="fas fa-chevron-right"></i> Departments</a></li><li><a href="index.html#doctors"><i class="fas fa-chevron-right"></i> Our Doctors</a></li><li><a href="#"><i class="fas fa-chevron-right"></i> Careers</a></li></ul></div>
+        <div class="footer-col"><h4>Departments</h4><ul><li><a href="cardiology.html"><i class="fas fa-chevron-right"></i> Cardiology</a></li><li><a href="neurology.html"><i class="fas fa-chevron-right"></i> Neurology</a></li><li><a href="orthopedics.html"><i class="fas fa-chevron-right"></i> Orthopedics</a></li><li><a href="pediatrics.html"><i class="fas fa-chevron-right"></i> Pediatrics</a></li><li><a href="general-medicine.html"><i class="fas fa-chevron-right"></i> General Medicine</a></li></ul></div>
+        <div class="footer-col"><h4>Contact Us</h4><div class="footer-contact"><div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>123 Medical Plaza Drive, Healthcare City</span></div><div class="contact-item"><i class="fas fa-phone"></i><span>(555) 123-4567</span></div><div class="contact-item"><i class="fas fa-envelope"></i><span>info@medicare.com</span></div><div class="contact-item"><i class="fas fa-clock"></i><span>Emergency: 24/7</span></div></div></div>
+    </div></div></div>
+    <div class="footer-bottom"><div class="container"><p>&copy; 2024 MediCare Excellence. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms</a></div></div></div>
+</footer>
+<button class="scroll-top" id="scrollTop" onclick="scrollToTop()"><i class="fas fa-chevron-up"></i></button>
+<script src="script.js"></script>
 </body>
 </html>

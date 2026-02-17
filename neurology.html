@@ -5,235 +5,268 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neurology Department - MediCare Excellence</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .dept-page-hero { position:relative; padding:8rem 0 4rem; overflow:hidden; min-height:380px; display:flex; align-items:flex-end; }
+        .dept-hero-bg { position:absolute; inset:0; background-image:url('https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1600&q=80'); background-size:cover; background-position:center; }
+        .dept-hero-overlay { position:absolute; inset:0; background:linear-gradient(to right, rgba(30,10,60,0.92) 40%, rgba(30,10,60,0.6) 100%); }
+        .dept-hero-content { position:relative; z-index:1; padding-bottom:3rem; }
+        .dept-hero-tag { display:inline-flex; align-items:center; gap:0.5rem; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.25); color:white; font-size:0.85rem; font-weight:600; padding:0.4rem 1rem; border-radius:50px; margin-bottom:1.25rem; }
+        .dept-hero-content h1 { font-family:'Playfair Display',serif; font-size:clamp(2.2rem,5vw,3.5rem); color:white; margin-bottom:1rem; }
+        .dept-hero-content p { color:rgba(255,255,255,0.85); max-width:600px; font-size:1.05rem; }
+        .highlights { padding:3rem 0; background:var(--bg-light); border-bottom:1px solid var(--border); }
+        .highlights-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem; }
+        .highlight-card { background:white; border-radius:var(--radius); padding:1.5rem; display:flex; align-items:center; gap:1rem; border:1.5px solid var(--border); transition:all var(--transition); }
+        .highlight-card:hover { transform:translateY(-4px); box-shadow:var(--shadow); }
+        .hl-icon { width:48px; height:48px; flex-shrink:0; border-radius:14px; background:linear-gradient(135deg,#8b5cf6,#6366f1); display:flex; align-items:center; justify-content:center; font-size:1.25rem; color:white; }
+        .hl-text strong { display:block; font-size:1.1rem; font-weight:700; color:var(--text-dark); }
+        .hl-text span { font-size:0.8rem; color:var(--text-light); }
+        .services-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin:1.5rem 0; }
+        .service-item { display:flex; align-items:flex-start; gap:0.75rem; background:var(--bg-light); border-radius:10px; padding:1rem; transition:all 0.2s; }
+        .service-item:hover { background:rgba(139,92,246,0.08); }
+        .service-item i { color:#8b5cf6; margin-top:0.15rem; flex-shrink:0; }
+        .service-item span { font-size:0.9rem; color:var(--text-mid); font-weight:500; }
+        .team-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.25rem; margin:1.5rem 0; }
+        .team-card { display:flex; gap:1rem; align-items:center; background:white; border-radius:var(--radius); padding:1rem; border:1.5px solid var(--border); transition:all 0.2s; }
+        .team-card:hover { border-color:#8b5cf6; box-shadow:var(--shadow-sm); }
+        .team-card img { width:60px; height:60px; border-radius:50%; object-fit:cover; flex-shrink:0; }
+        .team-card strong { display:block; font-size:0.92rem; color:var(--text-dark); }
+        .team-card span { font-size:0.78rem; color:var(--text-light); }
+        .dept-gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:0.75rem; margin:1.5rem 0; }
+        .dept-gallery img { border-radius:var(--radius); height:140px; object-fit:cover; }
+        .stroke-alert { background:linear-gradient(135deg,#ef4444,#dc2626); border-radius:var(--radius); padding:1.5rem; margin-top:1.5rem; }
+        .stroke-alert h4 { color:white; font-size:1rem; margin-bottom:0.75rem; display:flex; align-items:center; gap:0.5rem; }
+        .stroke-alert ul { list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:0.4rem; }
+        .stroke-alert ul li { color:rgba(255,255,255,0.9); font-size:0.85rem; display:flex; align-items:center; gap:0.4rem; }
+        .stroke-alert ul li::before { content:'⚡'; }
+        .stroke-alert p { color:white; font-weight:700; margin-top:0.75rem; font-size:0.9rem; }
+        @media(max-width:768px){ .highlights-grid{grid-template-columns:repeat(2,1fr);} .services-grid{grid-template-columns:1fr;} .team-grid{grid-template-columns:1fr;} .dept-gallery{grid-template-columns:repeat(2,1fr);} .stroke-alert ul{grid-template-columns:1fr;} }
+    </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="logo">
-                <div class="logo-icon">M</div>
-                <span>MediCare Excellence</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li class="dropdown">
-                    <a href="#departments" class="active">Departments</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="cardiology.html">Cardiology</a></li>
-                        <li><a href="neurology.html">Neurology</a></li>
-                        <li><a href="orthopedics.html">Orthopedics</a></li>
-                        <li><a href="pediatrics.html">Pediatrics</a></li>
-                        <li><a href="general-medicine.html">General Medicine</a></li>
-                    </ul>
-                </li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <button class="btn-primary">Book Appointment</button>
+<div class="modal-overlay" id="appointmentModal">
+    <div class="modal">
+        <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+        <div class="modal-header">
+            <div class="modal-icon"><i class="fas fa-calendar-check"></i></div>
+            <h2>Book an Appointment</h2>
+            <p>Fill in your details and we'll confirm within 2 hours</p>
         </div>
-    </nav>
-
-    <section class="page-hero">
-        <div class="page-hero-content">
-            <h1 class="fade-in-up">🧠 Neurology Department</h1>
-            <p class="fade-in-up delay-1">Expert neurological care for disorders of the brain, spinal cord, and nervous system with advanced diagnostics and innovative treatments</p>
-        </div>
-    </section>
-
-    <section class="content-section">
-        <div class="container">
-            <div class="content-grid">
-                <div class="main-content">
-                    <h2 class="reveal-text">Comprehensive Neurological Care</h2>
-                    <p class="reveal-text delay-1">Our Neurology Department provides expert diagnosis and treatment for the full spectrum of neurological conditions affecting the brain, spinal cord, and nervous system. Our team of board-certified neurologists combines clinical expertise with advanced technology to deliver personalized, effective care.</p>
-                    
-                    <p class="reveal-text delay-2">We understand that neurological conditions can be complex and life-altering. That's why we take a compassionate, patient-centered approach, working closely with you and your family to develop treatment plans that address not just symptoms, but your overall quality of life.</p>
-
-                    <h3 class="reveal-text delay-3">Our Neurology Services</h3>
-                    <p class="reveal-text delay-4">We offer comprehensive diagnostic and treatment services for all types of neurological disorders:</p>
-                    
-                    <ul class="reveal-text delay-5">
-                        <li>Comprehensive neurological examinations and assessments</li>
-                        <li>Electroencephalography (EEG) for seizure and brain activity monitoring</li>
-                        <li>Electromyography (EMG) and nerve conduction studies</li>
-                        <li>Advanced neuroimaging including MRI and CT scans</li>
-                        <li>Lumbar puncture and cerebrospinal fluid analysis</li>
-                        <li>Sleep studies for sleep-related neurological disorders</li>
-                        <li>Botox therapy for migraines, spasticity, and movement disorders</li>
-                        <li>Infusion therapy for multiple sclerosis and other conditions</li>
-                        <li>Cognitive and memory assessments</li>
-                        <li>Stroke prevention and management programs</li>
-                        <li>Headache and migraine treatment center</li>
-                        <li>Movement disorder clinic</li>
-                        <li>Epilepsy monitoring and treatment</li>
-                        <li>Neuromuscular disease clinic</li>
-                    </ul>
-
-                    <h3 class="reveal-text delay-1">Conditions We Treat</h3>
-                    <p class="reveal-text delay-2">Our neurologists have expertise in diagnosing and treating a wide range of neurological conditions:</p>
-                    
-                    <ul class="reveal-text delay-3">
-                        <li>Stroke and transient ischemic attacks (TIA)</li>
-                        <li>Epilepsy and seizure disorders</li>
-                        <li>Multiple sclerosis and demyelinating diseases</li>
-                        <li>Parkinson's disease and movement disorders</li>
-                        <li>Alzheimer's disease and other dementias</li>
-                        <li>Migraine headaches and other headache disorders</li>
-                        <li>Peripheral neuropathy and nerve damage</li>
-                        <li>Myasthenia gravis and neuromuscular disorders</li>
-                        <li>Essential tremor and dystonia</li>
-                        <li>Restless leg syndrome</li>
-                        <li>Carpal tunnel syndrome and nerve compression</li>
-                        <li>Bell's palsy and facial nerve disorders</li>
-                        <li>Guillain-Barré syndrome</li>
-                        <li>Trigeminal neuralgia</li>
-                        <li>Vertigo and balance disorders</li>
-                        <li>Brain tumors and neurological cancers</li>
-                        <li>Traumatic brain injury</li>
-                        <li>Spinal cord disorders</li>
-                    </ul>
-
-                    <h3 class="reveal-text delay-4">Advanced Diagnostic Technology</h3>
-                    <p class="reveal-text delay-5">Accurate diagnosis is crucial for effective neurological treatment. Our department features state-of-the-art diagnostic equipment:</p>
-                    
-                    <ul class="reveal-text delay-1">
-                        <li>High-resolution 3T MRI scanner for detailed brain and spine imaging</li>
-                        <li>Advanced CT angiography for vascular studies</li>
-                        <li>Digital EEG with video monitoring for comprehensive seizure evaluation</li>
-                        <li>EMG/NCS equipment for precise neuromuscular assessment</li>
-                        <li>Transcranial Doppler ultrasound for cerebrovascular evaluation</li>
-                        <li>Evoked potential testing for sensory pathway assessment</li>
-                        <li>Polysomnography lab for sleep disorder diagnosis</li>
-                        <li>Neuropsychological testing facilities</li>
-                    </ul>
-
-                    <h3 class="reveal-text delay-2">Specialized Neurology Programs</h3>
-                    <p class="reveal-text delay-3">We offer specialized programs for complex neurological conditions:</p>
-                    
-                    <h3 class="reveal-text delay-4">Stroke Center</h3>
-                    <p class="reveal-text delay-5">Our comprehensive stroke center provides rapid evaluation and treatment for acute stroke, including thrombolytic therapy and mechanical thrombectomy. We also offer extensive stroke prevention services and rehabilitation programs.</p>
-                    
-                    <h3 class="reveal-text delay-1">Headache and Migraine Clinic</h3>
-                    <p class="reveal-text delay-2">Specialized care for chronic headaches and migraines, including preventive treatments, acute management strategies, and innovative therapies like Botox injections and nerve blocks.</p>
-                    
-                    <h3 class="reveal-text delay-3">Movement Disorder Center</h3>
-                    <p class="reveal-text delay-4">Comprehensive evaluation and treatment for Parkinson's disease, essential tremor, dystonia, and other movement disorders, with access to the latest medical and surgical therapies.</p>
-                    
-                    <h3 class="reveal-text delay-5">Memory and Cognitive Disorders Clinic</h3>
-                    <p class="reveal-text delay-1">Specialized assessment and management of Alzheimer's disease, dementia, and memory problems, with comprehensive cognitive testing and support for patients and caregivers.</p>
-
-                    <h3 class="reveal-text delay-2">Meet Our Neurology Team</h3>
-                    <p class="reveal-text delay-3">Our neurology team includes board-certified neurologists with fellowship training in various subspecialties, including stroke, epilepsy, movement disorders, neuromuscular diseases, and headache medicine. Many of our physicians are actively involved in clinical research and teaching.</p>
-                    
-                    <p class="reveal-text delay-4">We work closely with neurosurgeons, neuroradiologists, rehabilitation specialists, and other healthcare professionals to ensure comprehensive, coordinated care for complex neurological conditions.</p>
-
-                    <h3 class="reveal-text delay-5">Research and Innovation</h3>
-                    <p class="reveal-text delay-1">Our department is committed to advancing neurological care through clinical research. We participate in clinical trials for new treatments and technologies, giving our patients access to cutting-edge therapies that may not yet be widely available.</p>
-                </div>
-
-                <div class="sidebar">
-                    <div class="info-box reveal-text">
-                        <h3>Quick Information</h3>
-                        <ul>
-                            <li><strong>Department Head:</strong> Dr. Michael Chen, MD</li>
-                            <li><strong>Specialists:</strong> 10 neurologists</li>
-                            <li><strong>Hours:</strong> Mon-Fri 8AM-6PM</li>
-                            <li><strong>Emergency:</strong> 24/7 stroke team</li>
-                            <li><strong>Location:</strong> 4th Floor, West Wing</li>
-                        </ul>
-                    </div>
-
-                    <div class="info-box reveal-text delay-1">
-                        <h3>When to See a Neurologist</h3>
-                        <ul>
-                            <li>Severe or chronic headaches</li>
-                            <li>Seizures or loss of consciousness</li>
-                            <li>Numbness or tingling</li>
-                            <li>Muscle weakness</li>
-                            <li>Tremors or movement problems</li>
-                            <li>Memory problems</li>
-                            <li>Dizziness or balance issues</li>
-                            <li>Vision problems</li>
-                        </ul>
-                    </div>
-
-                    <div class="info-box reveal-text delay-2">
-                        <h3>Stroke Warning Signs</h3>
-                        <ul>
-                            <li>Sudden face drooping</li>
-                            <li>Arm weakness</li>
-                            <li>Speech difficulty</li>
-                            <li>Severe headache</li>
-                            <li>Vision changes</li>
-                            <li>Balance problems</li>
-                        </ul>
-                        <p><strong>Time is critical - call 911 immediately!</strong></p>
-                    </div>
-
-                    <div class="info-box reveal-text delay-3">
-                        <h3>Schedule Your Appointment</h3>
-                        <p>Expert neurological care when you need it most.</p>
-                        <button class="btn-primary">Book Now</button>
-                    </div>
-                </div>
+        <form class="modal-form" onsubmit="submitForm(event)">
+            <div class="form-row">
+                <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your full name" required></div>
+                <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+91 98765 43210" required></div>
             </div>
-        </div>
-    </section>
-
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2 class="reveal-text">Expert Neurological Care</h2>
-                <p class="reveal-text delay-1">Don't let neurological symptoms go unchecked. Schedule a consultation with our expert team today.</p>
-                <button class="btn-primary large reveal-text delay-2">Schedule Consultation</button>
+            <div class="form-row">
+                <div class="form-group"><label>Email</label><input type="email" placeholder="you@email.com"></div>
+                <div class="form-group"><label>Department</label><select><option>Neurology</option><option>Cardiology</option><option>Orthopedics</option><option>Pediatrics</option><option>General Medicine</option></select></div>
             </div>
-        </div>
-    </section>
+            <div class="form-row">
+                <div class="form-group"><label>Preferred Date</label><input type="date" required></div>
+                <div class="form-group"><label>Preferred Time</label><select><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option></select></div>
+            </div>
+            <div class="form-group"><label>Symptoms (optional)</label><textarea placeholder="Describe your symptoms..."></textarea></div>
+            <button type="submit" class="btn-primary large full-width"><i class="fas fa-check-circle"></i> Confirm Appointment</button>
+        </form>
+    </div>
+</div>
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span>Appointment booked! We'll confirm shortly.</span></div>
 
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="logo">
-                        <div class="logo-icon">M</div>
-                        <span>MediCare Excellence</span>
-                    </div>
-                    <p>Providing exceptional healthcare services with compassion and excellence since 1995.</p>
+<nav class="navbar" id="navbar">
+    <div class="container">
+        <a href="index.html" class="logo"><div class="logo-icon"><i class="fas fa-heartbeat"></i></div><span>MediCare <em>Excellence</em></span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li class="dropdown">
+                <a href="#" class="active">Departments <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="cardiology.html"><i class="fas fa-heart"></i> Cardiology</a></li>
+                    <li><a href="neurology.html"><i class="fas fa-brain"></i> Neurology</a></li>
+                    <li><a href="orthopedics.html"><i class="fas fa-bone"></i> Orthopedics</a></li>
+                    <li><a href="pediatrics.html"><i class="fas fa-baby"></i> Pediatrics</a></li>
+                    <li><a href="general-medicine.html"><i class="fas fa-stethoscope"></i> General Medicine</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html#doctors">Doctors</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+            <a href="tel:5551234567" class="nav-phone"><i class="fas fa-phone"></i> (555) 123-4567</a>
+            <button class="btn-primary" onclick="openModal()">Book Appointment</button>
+        </div>
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<section class="dept-page-hero">
+    <div class="dept-hero-bg"></div>
+    <div class="dept-hero-overlay"></div>
+    <div class="container">
+        <div class="dept-hero-content fade-in-up">
+            <div class="dept-hero-tag"><i class="fas fa-brain"></i> Neurology Department</div>
+            <h1>Expert Care for Brain <br>& Nervous System</h1>
+            <p>Advanced diagnosis and treatment for the full spectrum of neurological conditions — with compassion, innovation, and precision.</p>
+        </div>
+    </div>
+</section>
+
+<section class="highlights">
+    <div class="container">
+        <div class="highlights-grid">
+            <div class="highlight-card reveal-text"><div class="hl-icon"><i class="fas fa-user-md"></i></div><div class="hl-text"><strong>10 Specialists</strong><span>Board-Certified Neurologists</span></div></div>
+            <div class="highlight-card reveal-text delay-1"><div class="hl-icon"><i class="fas fa-bolt"></i></div><div class="hl-text"><strong>30-min</strong><span>Stroke Response Time</span></div></div>
+            <div class="highlight-card reveal-text delay-2"><div class="hl-icon"><i class="fas fa-clock"></i></div><div class="hl-text"><strong>24/7</strong><span>Stroke Emergency Team</span></div></div>
+            <div class="highlight-card reveal-text delay-3"><div class="hl-icon"><i class="fas fa-star"></i></div><div class="hl-text"><strong>97%</strong><span>Patient Satisfaction</span></div></div>
+        </div>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        <div class="content-grid">
+            <div class="main-content">
+                <div class="dept-gallery reveal-text">
+                    <img src="https://images.unsplash.com/photo-1576671081837-49000212a370?w=400&q=80" alt="MRI Scan" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=400&q=80" alt="Brain Imaging" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=400&q=80" alt="Consultation" loading="lazy">
                 </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
+
+                <h2 class="reveal-text delay-1">Comprehensive Neurological Care</h2>
+                <p class="reveal-text delay-2">Our Neurology Department provides expert diagnosis and treatment for the full spectrum of neurological conditions affecting the brain, spinal cord, and nervous system. Our board-certified neurologists combine deep clinical expertise with the most advanced diagnostic technology available.</p>
+                <p class="reveal-text delay-3">We take a compassionate, patient-centered approach — working closely with you and your family to develop treatment plans that address not just symptoms, but your overall quality of life.</p>
+
+                <h3 class="reveal-text">Our Neurology Services</h3>
+                <div class="services-grid reveal-text delay-1">
+                    <div class="service-item"><i class="fas fa-wave-square"></i><span>EEG & Brain Activity Monitoring</span></div>
+                    <div class="service-item"><i class="fas fa-bolt"></i><span>EMG & Nerve Conduction Studies</span></div>
+                    <div class="service-item"><i class="fas fa-magnet"></i><span>3T MRI & CT Neuroimaging</span></div>
+                    <div class="service-item"><i class="fas fa-syringe"></i><span>Lumbar Puncture & CSF Analysis</span></div>
+                    <div class="service-item"><i class="fas fa-moon"></i><span>Sleep Studies & Polysomnography</span></div>
+                    <div class="service-item"><i class="fas fa-dot-circle"></i><span>Botox Therapy for Migraines</span></div>
+                    <div class="service-item"><i class="fas fa-brain"></i><span>Cognitive & Memory Assessments</span></div>
+                    <div class="service-item"><i class="fas fa-shield-alt"></i><span>Stroke Prevention Program</span></div>
+                    <div class="service-item"><i class="fas fa-heartbeat"></i><span>Epilepsy Monitoring & Treatment</span></div>
+                    <div class="service-item"><i class="fas fa-walking"></i><span>Movement Disorder Clinic</span></div>
+                </div>
+
+                <h3 class="reveal-text">Conditions We Treat</h3>
+                <ul class="reveal-text delay-1">
+                    <li>Stroke and transient ischemic attacks (TIA)</li>
+                    <li>Epilepsy and seizure disorders</li>
+                    <li>Multiple sclerosis and demyelinating diseases</li>
+                    <li>Parkinson's disease and movement disorders</li>
+                    <li>Alzheimer's disease and other dementias</li>
+                    <li>Migraine headaches and chronic headache disorders</li>
+                    <li>Peripheral neuropathy and nerve damage</li>
+                    <li>Myasthenia gravis and neuromuscular disorders</li>
+                    <li>Vertigo, balance disorders, and Bell's palsy</li>
+                    <li>Traumatic brain injury and spinal cord disorders</li>
+                </ul>
+
+                <h3 class="reveal-text">Specialized Programs</h3>
+                <div class="services-grid reveal-text delay-1">
+                    <div class="service-item"><i class="fas fa-hospital"></i><span>Comprehensive Stroke Center</span></div>
+                    <div class="service-item"><i class="fas fa-head-side-virus"></i><span>Headache & Migraine Clinic</span></div>
+                    <div class="service-item"><i class="fas fa-running"></i><span>Movement Disorder Center</span></div>
+                    <div class="service-item"><i class="fas fa-memory"></i><span>Memory & Cognitive Disorders Clinic</span></div>
+                </div>
+
+                <div class="stroke-alert reveal-text delay-2">
+                    <h4><i class="fas fa-exclamation-triangle"></i> Stroke Warning Signs — Act F.A.S.T.</h4>
                     <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="index.html#departments">Departments</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">News</a></li>
+                        <li>Face drooping suddenly</li>
+                        <li>Arm weakness on one side</li>
+                        <li>Speech difficulty or slurring</li>
+                        <li>Severe sudden headache</li>
+                        <li>Vision changes or loss</li>
+                        <li>Balance or coordination loss</li>
                     </ul>
+                    <p><i class="fas fa-phone"></i> Time is critical — call 911 immediately!</p>
                 </div>
-                <div class="footer-section">
-                    <h4>Departments</h4>
-                    <ul>
-                        <li><a href="cardiology.html">Cardiology</a></li>
-                        <li><a href="neurology.html">Neurology</a></li>
-                        <li><a href="orthopedics.html">Orthopedics</a></li>
-                        <li><a href="pediatrics.html">Pediatrics</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li>123 Medical Plaza Drive</li>
-                        <li>Healthcare City, HC 12345</li>
-                        <li>Phone: (555) 123-4567</li>
-                        <li>Email: info@medicare.com</li>
-                    </ul>
+
+                <h3 class="reveal-text">Meet Our Neurology Team</h3>
+                <div class="team-grid reveal-text delay-1">
+                    <div class="team-card"><img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=200&q=80" alt="Dr. Michael Chen"><div><strong>Dr. Michael Chen, MD, PhD</strong><span>Head of Neurology · Stroke Specialist · 15 yrs</span></div></div>
+                    <div class="team-card"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80" alt="Dr. Aisha Patel"><div><strong>Dr. Aisha Patel, MD</strong><span>Epileptologist · 12 yrs experience</span></div></div>
+                    <div class="team-card"><img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200&q=80" alt="Dr. Rachel Kim"><div><strong>Dr. Rachel Kim, MD</strong><span>Movement Disorder Specialist · 10 yrs</span></div></div>
+                    <div class="team-card"><img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=200&q=80" alt="Dr. Suresh Nair"><div><strong>Dr. Suresh Nair, MD</strong><span>Neuro-Oncology · 9 yrs experience</span></div></div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 MediCare Excellence. All rights reserved.</p>
+
+            <div class="sidebar">
+                <div class="info-box reveal-text">
+                    <h3>Quick Information</h3>
+                    <ul>
+                        <li><strong>Department Head:</strong> Dr. Michael Chen</li>
+                        <li><strong>Specialists:</strong> 10 neurologists</li>
+                        <li><strong>Hours:</strong> Mon–Fri 8AM–6PM</li>
+                        <li><strong>Emergency:</strong> 24/7 stroke team</li>
+                        <li><strong>Location:</strong> 4th Floor, West Wing</li>
+                    </ul>
+                </div>
+                <div class="info-box reveal-text delay-1">
+                    <h3>When to See a Neurologist</h3>
+                    <ul>
+                        <li>Severe or chronic headaches</li>
+                        <li>Seizures or blackouts</li>
+                        <li>Numbness or tingling</li>
+                        <li>Memory problems</li>
+                        <li>Tremors or balance issues</li>
+                        <li>Vision or speech problems</li>
+                    </ul>
+                </div>
+                <div class="info-box reveal-text delay-2">
+                    <h3>Advanced Diagnostics</h3>
+                    <ul>
+                        <li>High-resolution 3T MRI</li>
+                        <li>CT Angiography</li>
+                        <li>Digital EEG with video</li>
+                        <li>EMG / NCS studies</li>
+                        <li>Transcranial Doppler</li>
+                        <li>Neuropsychological testing</li>
+                    </ul>
+                </div>
+                <div class="info-box reveal-text delay-3" style="background:linear-gradient(135deg,#3b0764,#6d28d9);border-color:transparent;">
+                    <h3 style="color:white;">Book Your Appointment</h3>
+                    <p style="color:rgba(255,255,255,0.8)">Expert neurological care when you need it most.</p>
+                    <button class="btn-white" onclick="openModal()" style="margin-top:1.25rem;width:100%;justify-content:center;"><i class="fas fa-calendar-plus"></i> Book Now</button>
+                </div>
             </div>
         </div>
-    </footer>
+    </div>
+</section>
 
-    <script src="script.js"></script>
+<section class="cta-section">
+    <div class="cta-bg" style="background-image:url('https://images.unsplash.com/photo-1576671081837-49000212a370?w=1600&q=80')"></div>
+    <div class="cta-overlay"></div>
+    <div class="container">
+        <div class="cta-content reveal-text">
+            <h2>Expert Neurological Care Awaits</h2>
+            <p>Don't let neurological symptoms go unchecked. Our expert team is ready to help you.</p>
+            <div class="cta-actions">
+                <button class="btn-white large" onclick="openModal()"><i class="fas fa-calendar-check"></i> Schedule Consultation</button>
+                <a href="tel:5551234567" class="btn-outline-white large"><i class="fas fa-phone"></i> (555) 123-4567</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer id="contact">
+    <div class="footer-top"><div class="container"><div class="footer-grid">
+        <div class="footer-brand">
+            <a href="index.html" class="logo"><div class="logo-icon"><i class="fas fa-heartbeat"></i></div><span>MediCare <em>Excellence</em></span></a>
+            <p>Providing exceptional healthcare services with compassion and innovation since 1995.</p>
+            <div class="footer-socials"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div>
+        </div>
+        <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li><li><a href="index.html#departments"><i class="fas fa-chevron-right"></i> Departments</a></li><li><a href="index.html#doctors"><i class="fas fa-chevron-right"></i> Our Doctors</a></li><li><a href="#"><i class="fas fa-chevron-right"></i> Careers</a></li></ul></div>
+        <div class="footer-col"><h4>Departments</h4><ul><li><a href="cardiology.html"><i class="fas fa-chevron-right"></i> Cardiology</a></li><li><a href="neurology.html"><i class="fas fa-chevron-right"></i> Neurology</a></li><li><a href="orthopedics.html"><i class="fas fa-chevron-right"></i> Orthopedics</a></li><li><a href="pediatrics.html"><i class="fas fa-chevron-right"></i> Pediatrics</a></li><li><a href="general-medicine.html"><i class="fas fa-chevron-right"></i> General Medicine</a></li></ul></div>
+        <div class="footer-col"><h4>Contact Us</h4><div class="footer-contact"><div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>123 Medical Plaza Drive, Healthcare City</span></div><div class="contact-item"><i class="fas fa-phone"></i><span>(555) 123-4567</span></div><div class="contact-item"><i class="fas fa-envelope"></i><span>info@medicare.com</span></div><div class="contact-item"><i class="fas fa-clock"></i><span>Emergency: 24/7</span></div></div></div>
+    </div></div></div>
+    <div class="footer-bottom"><div class="container"><p>&copy; 2024 MediCare Excellence. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms</a></div></div></div>
+</footer>
+<button class="scroll-top" id="scrollTop" onclick="scrollToTop()"><i class="fas fa-chevron-up"></i></button>
+<script src="script.js"></script>
 </body>
 </html>

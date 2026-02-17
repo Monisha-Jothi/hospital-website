@@ -1,151 +1,250 @@
-// Smooth scroll reveal animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+// ============================================================
+// MEDIPORTAL — ENHANCED JAVASCRIPT
+// ============================================================
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, observerOptions);
-
-// Observe all elements with reveal-text class
 document.addEventListener('DOMContentLoaded', () => {
-    const revealElements = document.querySelectorAll('.reveal-text');
-    revealElements.forEach(el => observer.observe(el));
-    
-    // Add smooth scrolling to all links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+
+    // ===== SCROLL REVEAL =====
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal-text').forEach(el => observer.observe(el));
+
+    // ===== NAVBAR SCROLL =====
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.pageYOffset > 80);
+    });
+
+    // ===== SMOOTH SCROLL =====
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            const target = document.querySelector(a.getAttribute('href'));
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                e.preventDefault();
+                const offset = navbar.offsetHeight + 20;
+                window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
             }
         });
     });
-    
-    // Navbar scroll effect
-    let lastScroll = 0;
-    const navbar = document.querySelector('.navbar');
-    
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        if (currentScroll > 100) {
-            navbar.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
-        } else {
-            navbar.style.boxShadow = 'none';
-        }
-        
-        lastScroll = currentScroll;
-    });
-    
-    // Animate stat numbers on scroll
-    const animateValue = (element, start, end, duration) => {
-        let startTimestamp = null;
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            const value = Math.floor(progress * (end - start) + start);
-            element.textContent = value.toLocaleString();
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
-            }
-        };
-        window.requestAnimationFrame(step);
-    };
-    
-    const statObserver = new IntersectionObserver((entries) => {
+
+    // ===== ANIMATED COUNTER =====
+    const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const statNumber = entry.target.querySelector('.stat-number');
-                const text = statNumber.textContent;
-                const num = parseInt(text.replace(/[^0-9]/g, ''));
-                statNumber.textContent = '0';
-                animateValue(statNumber, 0, num, 2000);
-                
-                // Add suffix back if exists
-                if (text.includes('K')) {
-                    setTimeout(() => {
-                        statNumber.textContent = statNumber.textContent + 'K+';
-                    }, 2000);
-                } else if (text.includes('%')) {
-                    setTimeout(() => {
-                        statNumber.textContent = statNumber.textContent + '%';
-                    }, 2000);
-                } else if (text.includes('+')) {
-                    setTimeout(() => {
-                        statNumber.textContent = statNumber.textContent + '+';
-                    }, 2000);
-                }
-                
-                statObserver.unobserve(entry.target);
+                animateCounter(entry.target);
+                counterObserver.unobserve(entry.target);
             }
         });
     }, { threshold: 0.5 });
-    
-    const statCards = document.querySelectorAll('.stat-card');
-    statCards.forEach(card => statObserver.observe(card));
-    
-    // Add parallax effect to hero decoration
-    const heroDecoration = document.querySelector('.hero-decoration');
-    if (heroDecoration) {
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            heroDecoration.style.transform = `translateY(${scrolled * 0.3}px)`;
-        });
+
+    document.querySelectorAll('.stat-num').forEach(el => counterObserver.observe(el));
+
+    function animateCounter(el) {
+        const target = parseInt(el.dataset.target);
+        const suffix = target >= 10000 ? 'K+' : target >= 100 ? '+' : '%';
+        const displayTarget = target >= 10000 ? Math.floor(target / 1000) : target;
+        let current = 0;
+        const duration = 2000;
+        const step = (displayTarget / duration) * 16;
+        const timer = setInterval(() => {
+            current += step;
+            if (current >= displayTarget) {
+                el.textContent = displayTarget + suffix;
+                clearInterval(timer);
+            } else {
+                el.textContent = Math.floor(current);
+            }
+        }, 16);
     }
-    
-    // Button click effects
-    document.querySelectorAll('.btn-primary, .btn-secondary').forEach(button => {
-        button.addEventListener('click', function(e) {
+
+    // ===== HERO SLIDER =====
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    let currentSlide = 0;
+    let sliderInterval;
+
+    function goToSlide(index) {
+        slides[currentSlide].classList.remove('active');
+        dots[currentSlide].classList.remove('active');
+        currentSlide = index;
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() {
+        goToSlide((currentSlide + 1) % slides.length);
+    }
+
+    // expose globally
+    window.goToSlide = (i) => { clearInterval(sliderInterval); goToSlide(i); sliderInterval = setInterval(nextSlide, 5000); };
+
+    if (slides.length > 0) {
+        sliderInterval = setInterval(nextSlide, 5000);
+    }
+
+    // ===== TESTIMONIALS SLIDER =====
+    const track = document.querySelector('.testimonials-track');
+    const tDots = document.querySelectorAll('.t-dot');
+    let currentTest = 0;
+    const totalTests = document.querySelectorAll('.testimonial-card').length;
+    const isMobile = () => window.innerWidth <= 650;
+
+    function updateTestSlider() {
+        const visibleCount = isMobile() ? 1 : 2;
+        const cardWidth = track.parentElement.offsetWidth;
+        const gapSize = isMobile() ? 0 : 24;
+        const moveBy = (cardWidth + gapSize) / visibleCount;
+        track.style.transform = `translateX(-${currentTest * moveBy}px)`;
+        tDots.forEach((d, i) => d.classList.toggle('active', i === currentTest));
+    }
+
+    window.nextTest = () => {
+        const max = isMobile() ? totalTests - 1 : totalTests - 2;
+        currentTest = (currentTest + 1) % (max + 1);
+        updateTestSlider();
+    };
+    window.prevTest = () => {
+        const max = isMobile() ? totalTests - 1 : totalTests - 2;
+        currentTest = (currentTest - 1 + (max + 1)) % (max + 1);
+        updateTestSlider();
+    };
+
+    tDots.forEach((d, i) => d.addEventListener('click', () => { currentTest = i; updateTestSlider(); }));
+
+    // Auto-rotate testimonials
+    setInterval(window.nextTest, 6000);
+    window.addEventListener('resize', updateTestSlider);
+
+    // ===== SCROLL TO TOP =====
+    const scrollBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+        scrollBtn?.classList.toggle('visible', window.pageYOffset > 500);
+    });
+
+    window.scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // ===== MOBILE HAMBURGER =====
+    window.toggleMenu = () => {
+        const btn = document.getElementById('hamburger');
+        const links = document.getElementById('navLinks');
+        btn.classList.toggle('active');
+        links.classList.toggle('mobile-open');
+    };
+
+    // Close mobile nav on outside click
+    document.addEventListener('click', (e) => {
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        if (navLinks?.classList.contains('mobile-open') && !navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+            navLinks.classList.remove('mobile-open');
+            hamburger.classList.remove('active');
+        }
+    });
+
+    // Mobile dropdown toggle
+    document.querySelectorAll('.nav-links.mobile-open .dropdown > a, #navLinks .dropdown > a').forEach(a => {
+        a.addEventListener('click', function (e) {
+            if (window.innerWidth <= 900) {
+                e.preventDefault();
+                this.parentElement.classList.toggle('open');
+            }
+        });
+    });
+
+    // ===== APPOINTMENT MODAL =====
+    window.openModal = () => {
+        document.getElementById('appointmentModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.closeModal = () => {
+        document.getElementById('appointmentModal').classList.remove('active');
+        document.body.style.overflow = '';
+    };
+
+    // Close on backdrop click
+    document.getElementById('appointmentModal')?.addEventListener('click', function (e) {
+        if (e.target === this) window.closeModal();
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') window.closeModal();
+    });
+
+    // ===== FORM SUBMIT =====
+    window.submitForm = (e) => {
+        e.preventDefault();
+        window.closeModal();
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 4000);
+    };
+
+    // ===== RIPPLE EFFECT =====
+    document.querySelectorAll('.btn-primary, .btn-outline, .btn-white, .btn-outline-white').forEach(btn => {
+        btn.addEventListener('click', function (e) {
             const ripple = document.createElement('span');
             const rect = this.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            const x = e.clientX - rect.left - size / 2;
-            const y = e.clientY - rect.top - size / 2;
-            
-            ripple.style.width = ripple.style.height = size + 'px';
-            ripple.style.left = x + 'px';
-            ripple.style.top = y + 'px';
-            ripple.classList.add('ripple');
-            
+            const size = Math.max(rect.width, rect.height) * 2;
+            ripple.style.cssText = `
+                position:absolute; border-radius:50%; pointer-events:none;
+                width:${size}px; height:${size}px;
+                left:${e.clientX - rect.left - size / 2}px;
+                top:${e.clientY - rect.top - size / 2}px;
+                background:rgba(255,255,255,0.3);
+                animation:rippleAnim 0.6s ease-out forwards;
+            `;
+            this.style.position = 'relative';
+            this.style.overflow = 'hidden';
             this.appendChild(ripple);
-            
             setTimeout(() => ripple.remove(), 600);
         });
     });
-});
 
-// Add ripple effect styles dynamically
-const style = document.createElement('style');
-style.textContent = `
-    .btn-primary, .btn-secondary {
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .ripple {
-        position: absolute;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.4);
-        transform: scale(0);
-        animation: ripple-animation 0.6s ease-out;
-        pointer-events: none;
-    }
-    
-    @keyframes ripple-animation {
-        to {
-            transform: scale(4);
-            opacity: 0;
+    // ===== NAVBAR ACTIVE LINK =====
+    const sections = document.querySelectorAll('section[id]');
+    const navAnchors = document.querySelectorAll('.nav-links a');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = '#' + entry.target.id;
+                navAnchors.forEach(a => {
+                    a.classList.toggle('active', a.getAttribute('href') === id);
+                });
+            }
+        });
+    }, { rootMargin: '-40% 0px -60% 0px' });
+
+    sections.forEach(s => sectionObserver.observe(s));
+
+    // ===== PARALLAX ON HERO =====
+    window.addEventListener('scroll', () => {
+        const y = window.pageYOffset;
+        const slider = document.querySelector('.hero-slider');
+        if (slider && y < window.innerHeight) {
+            slider.style.transform = `translateY(${y * 0.25}px)`;
         }
+    });
+
+    // Add ripple keyframe style
+    const s = document.createElement('style');
+    s.textContent = `@keyframes rippleAnim { to { transform: scale(1); opacity: 0; } }`;
+    document.head.appendChild(s);
+
+    // Set min date for appointment form
+    const dateInput = document.querySelector('.modal-form input[type="date"]');
+    if (dateInput) {
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.min = today;
     }
-`;
-document.head.appendChild(style);
+
+});

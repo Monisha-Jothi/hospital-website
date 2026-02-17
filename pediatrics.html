@@ -5,246 +5,246 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pediatrics Department - MediCare Excellence</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .dept-page-hero { position:relative; padding:8rem 0 4rem; overflow:hidden; min-height:380px; display:flex; align-items:flex-end; }
+        .dept-hero-bg { position:absolute; inset:0; background-image:url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=1600&q=80'); background-size:cover; background-position:center top; }
+        .dept-hero-overlay { position:absolute; inset:0; background:linear-gradient(to right,rgba(120,40,0,0.88) 40%,rgba(120,40,0,0.55) 100%); }
+        .dept-hero-content { position:relative; z-index:1; padding-bottom:3rem; }
+        .dept-hero-tag { display:inline-flex; align-items:center; gap:0.5rem; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.25); color:white; font-size:0.85rem; font-weight:600; padding:0.4rem 1rem; border-radius:50px; margin-bottom:1.25rem; }
+        .dept-hero-content h1 { font-family:'Playfair Display',serif; font-size:clamp(2.2rem,5vw,3.5rem); color:white; margin-bottom:1rem; }
+        .dept-hero-content p { color:rgba(255,255,255,0.85); max-width:600px; font-size:1.05rem; }
+        .highlights { padding:3rem 0; background:var(--bg-light); border-bottom:1px solid var(--border); }
+        .highlights-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem; }
+        .highlight-card { background:white; border-radius:var(--radius); padding:1.5rem; display:flex; align-items:center; gap:1rem; border:1.5px solid var(--border); transition:all var(--transition); }
+        .highlight-card:hover { transform:translateY(-4px); box-shadow:var(--shadow); }
+        .hl-icon { width:48px; height:48px; flex-shrink:0; border-radius:14px; background:linear-gradient(135deg,#f59e0b,#f97316); display:flex; align-items:center; justify-content:center; font-size:1.25rem; color:white; }
+        .hl-text strong { display:block; font-size:1.1rem; font-weight:700; color:var(--text-dark); }
+        .hl-text span { font-size:0.8rem; color:var(--text-light); }
+        .services-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin:1.5rem 0; }
+        .service-item { display:flex; align-items:flex-start; gap:0.75rem; background:var(--bg-light); border-radius:10px; padding:1rem; transition:all 0.2s; }
+        .service-item:hover { background:rgba(245,158,11,0.1); }
+        .service-item i { color:#f59e0b; margin-top:0.15rem; flex-shrink:0; }
+        .service-item span { font-size:0.9rem; color:var(--text-mid); font-weight:500; }
+        .team-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.25rem; margin:1.5rem 0; }
+        .team-card { display:flex; gap:1rem; align-items:center; background:white; border-radius:var(--radius); padding:1rem; border:1.5px solid var(--border); transition:all 0.2s; }
+        .team-card:hover { border-color:#f59e0b; box-shadow:var(--shadow-sm); }
+        .team-card img { width:60px; height:60px; border-radius:50%; object-fit:cover; flex-shrink:0; }
+        .team-card strong { display:block; font-size:0.92rem; color:var(--text-dark); }
+        .team-card span { font-size:0.78rem; color:var(--text-light); }
+        .dept-gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:0.75rem; margin:1.5rem 0; }
+        .dept-gallery img { border-radius:var(--radius); height:140px; object-fit:cover; }
+        .age-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:1.5rem 0; }
+        .age-card { background:white; border:1.5px solid var(--border); border-radius:var(--radius); padding:1.25rem; text-align:center; transition:all 0.3s; }
+        .age-card:hover { border-color:#f59e0b; transform:translateY(-4px); box-shadow:var(--shadow); }
+        .age-card .age-icon { font-size:2.5rem; margin-bottom:0.75rem; }
+        .age-card h4 { font-size:0.95rem; font-weight:700; color:var(--text-dark); margin-bottom:0.4rem; }
+        .age-card p { font-size:0.8rem; color:var(--text-light); line-height:1.5; }
+        .emergency-box { background:linear-gradient(135deg,#fef3c7,#fde68a); border:1.5px solid #f59e0b; border-radius:var(--radius); padding:1.5rem; margin-top:1.5rem; }
+        .emergency-box h4 { color:#92400e; font-size:1rem; margin-bottom:0.75rem; display:flex; align-items:center; gap:0.5rem; }
+        .emergency-box ul { list-style:none; }
+        .emergency-box ul li { color:#78350f; font-size:0.9rem; padding:0.3rem 0; display:flex; align-items:center; gap:0.5rem; }
+        .emergency-box ul li::before { content:'⚠️'; font-size:0.8rem; }
+        @media(max-width:768px){ .highlights-grid{grid-template-columns:repeat(2,1fr);} .services-grid{grid-template-columns:1fr;} .team-grid{grid-template-columns:1fr;} .dept-gallery{grid-template-columns:repeat(2,1fr);} .age-cards{grid-template-columns:1fr;} }
+    </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="logo">
-                <div class="logo-icon">M</div>
-                <span>MediCare Excellence</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li class="dropdown">
-                    <a href="#departments" class="active">Departments</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="cardiology.html">Cardiology</a></li>
-                        <li><a href="neurology.html">Neurology</a></li>
-                        <li><a href="orthopedics.html">Orthopedics</a></li>
-                        <li><a href="pediatrics.html">Pediatrics</a></li>
-                        <li><a href="general-medicine.html">General Medicine</a></li>
-                    </ul>
-                </li>
-                <li><a href="#contact">Contact</a></li>
+<div class="modal-overlay" id="appointmentModal">
+    <div class="modal">
+        <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+        <div class="modal-header">
+            <div class="modal-icon"><i class="fas fa-calendar-check"></i></div>
+            <h2>Book an Appointment</h2>
+            <p>Fill in your details and we'll confirm within 2 hours</p>
+        </div>
+        <form class="modal-form" onsubmit="submitForm(event)">
+            <div class="form-row">
+                <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your full name" required></div>
+                <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+91 98765 43210" required></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label>Email</label><input type="email" placeholder="you@email.com"></div>
+                <div class="form-group"><label>Department</label><select><option>Pediatrics</option><option>Cardiology</option><option>Neurology</option><option>Orthopedics</option><option>General Medicine</option></select></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label>Preferred Date</label><input type="date" required></div>
+                <div class="form-group"><label>Preferred Time</label><select><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option></select></div>
+            </div>
+            <div class="form-group"><label>Child's Age &amp; Symptoms (optional)</label><textarea placeholder="Child's age and symptoms..."></textarea></div>
+            <button type="submit" class="btn-primary large full-width"><i class="fas fa-check-circle"></i> Confirm Appointment</button>
+        </form>
+    </div>
+</div>
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span>Appointment booked! We'll confirm shortly.</span></div>
+
+<nav class="navbar" id="navbar">
+    <div class="container">
+        <a href="index.html" class="logo"><div class="logo-icon"><i class="fas fa-heartbeat"></i></div><span>MediCare <em>Excellence</em></span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+            <li class="dropdown"><a href="#" class="active">Departments <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="cardiology.html"><i class="fas fa-heart"></i> Cardiology</a></li>
+                    <li><a href="neurology.html"><i class="fas fa-brain"></i> Neurology</a></li>
+                    <li><a href="orthopedics.html"><i class="fas fa-bone"></i> Orthopedics</a></li>
+                    <li><a href="pediatrics.html"><i class="fas fa-baby"></i> Pediatrics</a></li>
+                    <li><a href="general-medicine.html"><i class="fas fa-stethoscope"></i> General Medicine</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html#doctors">Doctors</a></li><li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-right"><a href="tel:5551234567" class="nav-phone"><i class="fas fa-phone"></i> (555) 123-4567</a><button class="btn-primary" onclick="openModal()">Book Appointment</button></div>
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<section class="dept-page-hero">
+    <div class="dept-hero-bg"></div><div class="dept-hero-overlay"></div>
+    <div class="container"><div class="dept-hero-content fade-in-up">
+        <div class="dept-hero-tag"><i class="fas fa-baby"></i> Pediatrics Department</div>
+        <h1>Caring for Your <br>Little Ones</h1>
+        <p>Compassionate, comprehensive healthcare for infants, children, and adolescents — in a warm, child-friendly environment that families love.</p>
+    </div></div>
+</section>
+
+<section class="highlights">
+    <div class="container"><div class="highlights-grid">
+        <div class="highlight-card reveal-text"><div class="hl-icon"><i class="fas fa-user-md"></i></div><div class="hl-text"><strong>8 Pediatricians</strong><span>Board-Certified Specialists</span></div></div>
+        <div class="highlight-card reveal-text delay-1"><div class="hl-icon"><i class="fas fa-baby"></i></div><div class="hl-text"><strong>Newborns</strong><span>to 18 Years of Age</span></div></div>
+        <div class="highlight-card reveal-text delay-2"><div class="hl-icon"><i class="fas fa-phone"></i></div><div class="hl-text"><strong>24/7</strong><span>Nurse Advice Line</span></div></div>
+        <div class="highlight-card reveal-text delay-3"><div class="hl-icon"><i class="fas fa-star"></i></div><div class="hl-text"><strong>5.0</strong><span>Average Patient Rating</span></div></div>
+    </div></div>
+</section>
+
+<section class="content-section">
+    <div class="container"><div class="content-grid">
+        <div class="main-content">
+            <div class="dept-gallery reveal-text">
+                <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&q=80" alt="Pediatric Care" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?w=400&q=80" alt="Child Checkup" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1576671081837-49000212a370?w=400&q=80" alt="Vaccination" loading="lazy">
+            </div>
+
+            <h2 class="reveal-text delay-1">Caring for Your Child's Health</h2>
+            <p class="reveal-text delay-2">Our Pediatrics Department is dedicated to providing exceptional healthcare for children from birth through adolescence. We understand that children have unique medical needs requiring specialized care, patience, and a gentle touch.</p>
+            <p class="reveal-text delay-3">Our board-certified pediatricians create a warm, welcoming environment where children feel comfortable and families feel supported. We partner with parents to ensure every child receives the personalized care they need to grow healthy and strong.</p>
+
+            <h3 class="reveal-text">Care for Every Stage</h3>
+            <div class="age-cards reveal-text delay-1">
+                <div class="age-card"><div class="age-icon">👶</div><h4>Newborns & Infants</h4><p>Newborn care, lactation support, jaundice monitoring, developmental milestones</p></div>
+                <div class="age-card"><div class="age-icon">🧒</div><h4>Children 1–12 yrs</h4><p>Well-child visits, immunizations, school physicals, acute illness care</p></div>
+                <div class="age-card"><div class="age-icon">🧑‍🎓</div><h4>Teens 13–18 yrs</h4><p>Adolescent medicine, mental health, sports physicals, sexual health education</p></div>
+            </div>
+
+            <h3 class="reveal-text">Our Pediatric Services</h3>
+            <div class="services-grid reveal-text delay-1">
+                <div class="service-item"><i class="fas fa-stethoscope"></i><span>Well-Child Checkups & Screenings</span></div>
+                <div class="service-item"><i class="fas fa-syringe"></i><span>Immunizations & Vaccines</span></div>
+                <div class="service-item"><i class="fas fa-virus"></i><span>Sick Child & Urgent Care Visits</span></div>
+                <div class="service-item"><i class="fas fa-lungs"></i><span>Asthma & Allergy Management</span></div>
+                <div class="service-item"><i class="fas fa-brain"></i><span>ADHD Evaluation & Management</span></div>
+                <div class="service-item"><i class="fas fa-chart-line"></i><span>Growth & Development Monitoring</span></div>
+                <div class="service-item"><i class="fas fa-heartbeat"></i><span>Chronic Disease Management</span></div>
+                <div class="service-item"><i class="fas fa-video"></i><span>Telemedicine Consultations</span></div>
+                <div class="service-item"><i class="fas fa-apple-alt"></i><span>Nutrition & Weight Counseling</span></div>
+                <div class="service-item"><i class="fas fa-running"></i><span>Sports Physicals</span></div>
+            </div>
+
+            <h3 class="reveal-text">Recommended Well-Child Visit Schedule</h3>
+            <ul class="reveal-text delay-1">
+                <li>Newborn: 2–5 days after birth</li>
+                <li>Infancy: 1, 2, 4, 6, 9, and 12 months</li>
+                <li>Toddler: 15, 18, 24, and 30 months</li>
+                <li>Early childhood: 3, 4, and 5 years</li>
+                <li>School age and teens: Every year from ages 6–21</li>
             </ul>
-            <button class="btn-primary">Book Appointment</button>
-        </div>
-    </nav>
 
-    <section class="page-hero">
-        <div class="page-hero-content">
-            <h1 class="fade-in-up">👶 Pediatrics Department</h1>
-            <p class="fade-in-up delay-1">Compassionate, comprehensive healthcare for infants, children, and adolescents in a warm, child-friendly environment</p>
-        </div>
-    </section>
+            <div class="emergency-box reveal-text delay-2">
+                <h4><i class="fas fa-phone-alt"></i> When to Call or Visit Immediately</h4>
+                <ul>
+                    <li>High fever in infant under 3 months</li>
+                    <li>Difficulty breathing or rapid breathing</li>
+                    <li>Severe dehydration (no urination, dry mouth)</li>
+                    <li>Head injury with vomiting</li>
+                    <li>Allergic reaction or hives</li>
+                    <li>Severe or unusual pain</li>
+                </ul>
+            </div>
 
-    <section class="content-section">
-        <div class="container">
-            <div class="content-grid">
-                <div class="main-content">
-                    <h2 class="reveal-text">Caring for Your Child's Health</h2>
-                    <p class="reveal-text delay-1">Our Pediatrics Department is dedicated to providing exceptional healthcare for children from birth through adolescence. We understand that children are not just small adults—they have unique medical needs that require specialized care, patience, and a gentle touch.</p>
-                    
-                    <p class="reveal-text delay-2">Our board-certified pediatricians and pediatric specialists create a warm, welcoming environment where children feel comfortable and families feel supported. We partner with parents to ensure every child receives the personalized care they need to grow healthy and strong.</p>
-
-                    <h3 class="reveal-text delay-3">Our Pediatric Services</h3>
-                    <p class="reveal-text delay-4">We provide comprehensive healthcare services for children at every stage of development:</p>
-                    
-                    <ul class="reveal-text delay-5">
-                        <li>Well-child checkups and developmental screenings</li>
-                        <li>Newborn care and lactation support</li>
-                        <li>Immunizations and vaccine counseling</li>
-                        <li>Sick child visits and urgent care</li>
-                        <li>Chronic disease management (asthma, diabetes, allergies)</li>
-                        <li>Behavioral and developmental assessments</li>
-                        <li>ADHD evaluation and management</li>
-                        <li>Sports physicals and school physicals</li>
-                        <li>Nutrition and growth counseling</li>
-                        <li>Adolescent medicine and teen health</li>
-                        <li>Minor surgical procedures</li>
-                        <li>Laboratory services and diagnostic testing</li>
-                        <li>Telemedicine consultations</li>
-                        <li>After-hours nurse line</li>
-                    </ul>
-
-                    <h3 class="reveal-text delay-1">Common Conditions We Treat</h3>
-                    <p class="reveal-text delay-2">Our pediatricians have expertise in diagnosing and treating a wide range of childhood illnesses and conditions:</p>
-                    
-                    <ul class="reveal-text delay-3">
-                        <li>Respiratory infections (colds, flu, bronchitis, pneumonia)</li>
-                        <li>Ear infections and earaches</li>
-                        <li>Strep throat and tonsillitis</li>
-                        <li>Asthma and allergies</li>
-                        <li>Eczema and other skin conditions</li>
-                        <li>Gastrointestinal issues (constipation, diarrhea, reflux)</li>
-                        <li>Urinary tract infections</li>
-                        <li>Childhood obesity and weight management</li>
-                        <li>Growth and developmental concerns</li>
-                        <li>Behavioral issues and sleep problems</li>
-                        <li>ADHD and learning difficulties</li>
-                        <li>Anxiety and depression in children and teens</li>
-                        <li>Diabetes and endocrine disorders</li>
-                        <li>Sports injuries</li>
-                    </ul>
-
-                    <h3 class="reveal-text delay-4">Well-Child Care</h3>
-                    <p class="reveal-text delay-5">Regular well-child visits are essential for monitoring your child's growth, development, and overall health. These appointments allow us to:</p>
-                    
-                    <ul class="reveal-text delay-1">
-                        <li>Track growth and development milestones</li>
-                        <li>Provide age-appropriate immunizations</li>
-                        <li>Screen for developmental delays or health concerns</li>
-                        <li>Discuss nutrition, safety, and parenting questions</li>
-                        <li>Build a trusting relationship with your family</li>
-                        <li>Identify potential health issues early</li>
-                        <li>Provide guidance on age-specific health topics</li>
-                    </ul>
-                    
-                    <p class="reveal-text delay-2">We follow the American Academy of Pediatrics recommended schedule for well-child visits, with more frequent visits in infancy and annually thereafter.</p>
-
-                    <h3 class="reveal-text delay-3">Newborn and Infant Care</h3>
-                    <p class="reveal-text delay-4">The first year of life is a time of rapid growth and development. Our newborn care services include:</p>
-                    
-                    <ul class="reveal-text delay-5">
-                        <li>Hospital visits for newborns</li>
-                        <li>First week newborn checkup</li>
-                        <li>Breastfeeding support and lactation consultation</li>
-                        <li>Newborn screening and testing</li>
-                        <li>Jaundice monitoring and treatment</li>
-                        <li>Circumcision care</li>
-                        <li>Feeding and sleep guidance</li>
-                        <li>Infant safety counseling</li>
-                    </ul>
-
-                    <h3 class="reveal-text delay-1">Adolescent Medicine</h3>
-                    <p class="reveal-text delay-2">The teenage years bring unique health challenges. Our adolescent medicine services provide confidential, respectful care addressing:</p>
-                    
-                    <ul class="reveal-text delay-3">
-                        <li>Puberty and hormonal changes</li>
-                        <li>Acne treatment</li>
-                        <li>Mental health screening and support</li>
-                        <li>Sports medicine and injury prevention</li>
-                        <li>Nutritional counseling and eating disorders</li>
-                        <li>Sexual health education</li>
-                        <li>College health preparation</li>
-                        <li>Substance abuse prevention</li>
-                    </ul>
-
-                    <h3 class="reveal-text delay-4">Childhood Immunizations</h3>
-                    <p class="reveal-text delay-5">Vaccines are one of the most important ways to protect your child's health. We provide all recommended childhood vaccines and take time to answer parents' questions about vaccine safety and schedules. Our vaccine refrigerators are monitored 24/7 to ensure proper storage and effectiveness.</p>
-
-                    <h3 class="reveal-text delay-1">Chronic Disease Management</h3>
-                    <p class="reveal-text delay-2">For children with chronic conditions like asthma, diabetes, or allergies, we provide comprehensive ongoing care including regular monitoring, medication management, education for families, and coordination with specialists when needed.</p>
-
-                    <h3 class="reveal-text delay-3">Child-Friendly Environment</h3>
-                    <p class="reveal-text delay-4">We've designed our pediatric department to be welcoming and fun for children. Our waiting area features toys, books, and activities to keep kids entertained. Exam rooms are decorated with bright colors and child-friendly themes. We strive to make every visit as stress-free as possible for both children and parents.</p>
-
-                    <h3 class="reveal-text delay-5">Meet Our Pediatric Team</h3>
-                    <p class="reveal-text delay-1">Our pediatric team includes board-certified pediatricians, pediatric nurse practitioners, and specialized nursing staff trained in working with children. We believe in building long-term relationships with families, often caring for children from birth through college.</p>
-                </div>
-
-                <div class="sidebar">
-                    <div class="info-box reveal-text">
-                        <h3>Quick Information</h3>
-                        <ul>
-                            <li><strong>Department Head:</strong> Dr. Emily Thompson, MD</li>
-                            <li><strong>Specialists:</strong> 8 pediatricians</li>
-                            <li><strong>Hours:</strong> Mon-Fri 8AM-7PM, Sat 9AM-3PM</li>
-                            <li><strong>Nurse Line:</strong> Available 24/7</li>
-                            <li><strong>Location:</strong> 1st Floor, North Wing</li>
-                        </ul>
-                    </div>
-
-                    <div class="info-box reveal-text delay-1">
-                        <h3>Well-Child Visit Schedule</h3>
-                        <ul>
-                            <li>2-5 days old</li>
-                            <li>1, 2, 4, 6, 9, 12 months</li>
-                            <li>15, 18, 24, 30 months</li>
-                            <li>3, 4, 5 years</li>
-                            <li>6-21 years annually</li>
-                        </ul>
-                    </div>
-
-                    <div class="info-box reveal-text delay-2">
-                        <h3>When to Call Immediately</h3>
-                        <ul>
-                            <li>High fever in infant under 3 months</li>
-                            <li>Difficulty breathing</li>
-                            <li>Severe dehydration</li>
-                            <li>Head injury with vomiting</li>
-                            <li>Allergic reaction</li>
-                            <li>Severe pain</li>
-                        </ul>
-                        <p><strong>For emergencies, call 911</strong></p>
-                    </div>
-
-                    <div class="info-box reveal-text delay-3">
-                        <h3>Schedule Your Appointment</h3>
-                        <p>Give your child the gift of excellent healthcare.</p>
-                        <button class="btn-primary">Book Now</button>
-                    </div>
-                </div>
+            <h3 class="reveal-text">Meet Our Pediatric Team</h3>
+            <div class="team-grid reveal-text delay-1">
+                <div class="team-card"><img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200&q=80" alt="Dr. Emily Thompson"><div><strong>Dr. Emily Thompson, MD</strong><span>Head of Pediatrics · FAAP · 12 yrs</span></div></div>
+                <div class="team-card"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80" alt="Dr. Raj Krishnan"><div><strong>Dr. Raj Krishnan, MD</strong><span>Neonatologist · 14 yrs experience</span></div></div>
+                <div class="team-card"><img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=200&q=80" alt="Dr. Sunita Roy"><div><strong>Dr. Sunita Roy, MD</strong><span>Adolescent Medicine · 10 yrs</span></div></div>
+                <div class="team-card"><img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=200&q=80" alt="Dr. Aaron Lewis"><div><strong>Dr. Aaron Lewis, MD</strong><span>Pediatric Allergist · 8 yrs</span></div></div>
             </div>
         </div>
-    </section>
 
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2 class="reveal-text">Your Child Deserves the Best Care</h2>
-                <p class="reveal-text delay-1">Join our pediatric family and experience compassionate, expert care for your child.</p>
-                <button class="btn-primary large reveal-text delay-2">Schedule Appointment</button>
+        <div class="sidebar">
+            <div class="info-box reveal-text">
+                <h3>Quick Information</h3>
+                <ul>
+                    <li><strong>Department Head:</strong> Dr. Emily Thompson</li>
+                    <li><strong>Specialists:</strong> 8 pediatricians</li>
+                    <li><strong>Hours:</strong> Mon–Fri 8AM–7PM, Sat 9AM–3PM</li>
+                    <li><strong>Nurse Line:</strong> Available 24/7</li>
+                    <li><strong>Location:</strong> 1st Floor, North Wing</li>
+                </ul>
+            </div>
+            <div class="info-box reveal-text delay-1">
+                <h3>Conditions We Treat</h3>
+                <ul>
+                    <li>Respiratory infections & flu</li>
+                    <li>Ear infections & strep throat</li>
+                    <li>Asthma & allergies</li>
+                    <li>Eczema & skin conditions</li>
+                    <li>Digestive disorders</li>
+                    <li>ADHD & anxiety</li>
+                    <li>Diabetes & weight management</li>
+                </ul>
+            </div>
+            <div class="info-box reveal-text delay-2">
+                <h3>What to Bring</h3>
+                <ul>
+                    <li>Insurance card & photo ID</li>
+                    <li>Child's immunization record</li>
+                    <li>List of current medications</li>
+                    <li>Any previous health records</li>
+                </ul>
+            </div>
+            <div class="info-box reveal-text delay-3" style="background:linear-gradient(135deg,#78350f,#b45309);border-color:transparent;">
+                <h3 style="color:white;">Book Your Appointment</h3>
+                <p style="color:rgba(255,255,255,0.8)">Give your child the best start with expert pediatric care.</p>
+                <button class="btn-white" onclick="openModal()" style="margin-top:1.25rem;width:100%;justify-content:center;"><i class="fas fa-calendar-plus"></i> Book Now</button>
             </div>
         </div>
-    </section>
+    </div></div>
+</section>
 
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="logo">
-                        <div class="logo-icon">M</div>
-                        <span>MediCare Excellence</span>
-                    </div>
-                    <p>Providing exceptional healthcare services with compassion and excellence since 1995.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="index.html#departments">Departments</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">News</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Departments</h4>
-                    <ul>
-                        <li><a href="cardiology.html">Cardiology</a></li>
-                        <li><a href="neurology.html">Neurology</a></li>
-                        <li><a href="orthopedics.html">Orthopedics</a></li>
-                        <li><a href="pediatrics.html">Pediatrics</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li>123 Medical Plaza Drive</li>
-                        <li>Healthcare City, HC 12345</li>
-                        <li>Phone: (555) 123-4567</li>
-                        <li>Email: info@medicare.com</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 MediCare Excellence. All rights reserved.</p>
-            </div>
+<section class="cta-section">
+    <div class="cta-bg" style="background-image:url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=1600&q=80')"></div>
+    <div class="cta-overlay"></div>
+    <div class="container"><div class="cta-content reveal-text">
+        <h2>Your Child Deserves the Best Care</h2>
+        <p>Join our pediatric family and experience compassionate, expert care for your child at every stage.</p>
+        <div class="cta-actions">
+            <button class="btn-white large" onclick="openModal()"><i class="fas fa-calendar-check"></i> Schedule Appointment</button>
+            <a href="tel:5551234567" class="btn-outline-white large"><i class="fas fa-phone"></i> (555) 123-4567</a>
         </div>
-    </footer>
+    </div></div>
+</section>
 
-    <script src="script.js"></script>
+<footer id="contact">
+    <div class="footer-top"><div class="container"><div class="footer-grid">
+        <div class="footer-brand"><a href="index.html" class="logo"><div class="logo-icon"><i class="fas fa-heartbeat"></i></div><span>MediCare <em>Excellence</em></span></a><p>Providing exceptional healthcare services with compassion and innovation since 1995.</p><div class="footer-socials"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div></div>
+        <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li><li><a href="index.html#departments"><i class="fas fa-chevron-right"></i> Departments</a></li><li><a href="index.html#doctors"><i class="fas fa-chevron-right"></i> Our Doctors</a></li><li><a href="#"><i class="fas fa-chevron-right"></i> Careers</a></li></ul></div>
+        <div class="footer-col"><h4>Departments</h4><ul><li><a href="cardiology.html"><i class="fas fa-chevron-right"></i> Cardiology</a></li><li><a href="neurology.html"><i class="fas fa-chevron-right"></i> Neurology</a></li><li><a href="orthopedics.html"><i class="fas fa-chevron-right"></i> Orthopedics</a></li><li><a href="pediatrics.html"><i class="fas fa-chevron-right"></i> Pediatrics</a></li><li><a href="general-medicine.html"><i class="fas fa-chevron-right"></i> General Medicine</a></li></ul></div>
+        <div class="footer-col"><h4>Contact Us</h4><div class="footer-contact"><div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>123 Medical Plaza Drive, Healthcare City</span></div><div class="contact-item"><i class="fas fa-phone"></i><span>(555) 123-4567</span></div><div class="contact-item"><i class="fas fa-envelope"></i><span>info@medicare.com</span></div><div class="contact-item"><i class="fas fa-clock"></i><span>Emergency: 24/7</span></div></div></div>
+    </div></div></div>
+    <div class="footer-bottom"><div class="container"><p>&copy; 2024 MediCare Excellence. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms</a></div></div></div>
+</footer>
+<button class="scroll-top" id="scrollTop" onclick="scrollToTop()"><i class="fas fa-chevron-up"></i></button>
+<script src="script.js"></script>
 </body>
 </html>

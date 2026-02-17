@@ -3,267 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>General Medicine Department - MediCare Excellence</title>
+    <title>General Medicine - MediCare Excellence</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .dept-page-hero { position:relative; padding:8rem 0 4rem; overflow:hidden; min-height:380px; display:flex; align-items:flex-end; }
+        .dept-hero-bg { position:absolute; inset:0; background-image:url('https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=1600&q=80'); background-size:cover; background-position:center; }
+        .dept-hero-overlay { position:absolute; inset:0; background:linear-gradient(to right,rgba(2,44,34,0.92) 40%,rgba(2,44,34,0.6) 100%); }
+        .dept-hero-content { position:relative; z-index:1; padding-bottom:3rem; }
+        .dept-hero-tag { display:inline-flex; align-items:center; gap:0.5rem; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.25); color:white; font-size:0.85rem; font-weight:600; padding:0.4rem 1rem; border-radius:50px; margin-bottom:1.25rem; }
+        .dept-hero-content h1 { font-family:'Playfair Display',serif; font-size:clamp(2.2rem,5vw,3.5rem); color:white; margin-bottom:1rem; }
+        .dept-hero-content p { color:rgba(255,255,255,0.85); max-width:600px; font-size:1.05rem; }
+        .highlights { padding:3rem 0; background:var(--bg-light); border-bottom:1px solid var(--border); }
+        .highlights-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem; }
+        .highlight-card { background:white; border-radius:var(--radius); padding:1.5rem; display:flex; align-items:center; gap:1rem; border:1.5px solid var(--border); transition:all var(--transition); }
+        .highlight-card:hover { transform:translateY(-4px); box-shadow:var(--shadow); }
+        .hl-icon { width:48px; height:48px; flex-shrink:0; border-radius:14px; background:linear-gradient(135deg,#10b981,#0d9488); display:flex; align-items:center; justify-content:center; font-size:1.25rem; color:white; }
+        .hl-text strong { display:block; font-size:1.1rem; font-weight:700; color:var(--text-dark); }
+        .hl-text span { font-size:0.8rem; color:var(--text-light); }
+        .services-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin:1.5rem 0; }
+        .service-item { display:flex; align-items:flex-start; gap:0.75rem; background:var(--bg-light); border-radius:10px; padding:1rem; transition:all 0.2s; }
+        .service-item:hover { background:rgba(16,185,129,0.08); }
+        .service-item i { color:#10b981; margin-top:0.15rem; flex-shrink:0; }
+        .service-item span { font-size:0.9rem; color:var(--text-mid); font-weight:500; }
+        .team-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.25rem; margin:1.5rem 0; }
+        .team-card { display:flex; gap:1rem; align-items:center; background:white; border-radius:var(--radius); padding:1rem; border:1.5px solid var(--border); transition:all 0.2s; }
+        .team-card:hover { border-color:#10b981; box-shadow:var(--shadow-sm); }
+        .team-card img { width:60px; height:60px; border-radius:50%; object-fit:cover; flex-shrink:0; }
+        .team-card strong { display:block; font-size:0.92rem; color:var(--text-dark); }
+        .team-card span { font-size:0.78rem; color:var(--text-light); }
+        .dept-gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:0.75rem; margin:1.5rem 0; }
+        .dept-gallery img { border-radius:var(--radius); height:140px; object-fit:cover; }
+        .screening-table { width:100%; border-collapse:collapse; margin:1.5rem 0; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-sm); }
+        .screening-table th { background:linear-gradient(135deg,#10b981,#0d9488); color:white; padding:0.85rem 1rem; text-align:left; font-size:0.9rem; }
+        .screening-table td { padding:0.85rem 1rem; font-size:0.88rem; color:var(--text-mid); border-bottom:1px solid var(--border); }
+        .screening-table tr:last-child td { border-bottom:none; }
+        .screening-table tr:nth-child(even) td { background:var(--bg-light); }
+        @media(max-width:768px){ .highlights-grid{grid-template-columns:repeat(2,1fr);} .services-grid{grid-template-columns:1fr;} .team-grid{grid-template-columns:1fr;} .dept-gallery{grid-template-columns:repeat(2,1fr);} .screening-table{display:block;overflow-x:auto;} }
+    </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="logo">
-                <div class="logo-icon">M</div>
-                <span>MediCare Excellence</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li class="dropdown">
-                    <a href="#departments" class="active">Departments</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="cardiology.html">Cardiology</a></li>
-                        <li><a href="neurology.html">Neurology</a></li>
-                        <li><a href="orthopedics.html">Orthopedics</a></li>
-                        <li><a href="pediatrics.html">Pediatrics</a></li>
-                        <li><a href="general-medicine.html">General Medicine</a></li>
-                    </ul>
-                </li>
-                <li><a href="#contact">Contact</a></li>
+<div class="modal-overlay" id="appointmentModal">
+    <div class="modal">
+        <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+        <div class="modal-header">
+            <div class="modal-icon"><i class="fas fa-calendar-check"></i></div>
+            <h2>Book an Appointment</h2>
+            <p>Fill in your details and we'll confirm within 2 hours</p>
+        </div>
+        <form class="modal-form" onsubmit="submitForm(event)">
+            <div class="form-row">
+                <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your full name" required></div>
+                <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+91 98765 43210" required></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label>Email</label><input type="email" placeholder="you@email.com"></div>
+                <div class="form-group"><label>Department</label><select><option>General Medicine</option><option>Cardiology</option><option>Neurology</option><option>Orthopedics</option><option>Pediatrics</option></select></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label>Preferred Date</label><input type="date" required></div>
+                <div class="form-group"><label>Preferred Time</label><select><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option></select></div>
+            </div>
+            <div class="form-group"><label>Symptoms (optional)</label><textarea placeholder="Describe your symptoms..."></textarea></div>
+            <button type="submit" class="btn-primary large full-width"><i class="fas fa-check-circle"></i> Confirm Appointment</button>
+        </form>
+    </div>
+</div>
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span>Appointment booked! We'll confirm shortly.</span></div>
+
+<nav class="navbar" id="navbar">
+    <div class="container">
+        <a href="index.html" class="logo"><div class="logo-icon"><i class="fas fa-heartbeat"></i></div><span>MediCare <em>Excellence</em></span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+            <li class="dropdown"><a href="#" class="active">Departments <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="cardiology.html"><i class="fas fa-heart"></i> Cardiology</a></li>
+                    <li><a href="neurology.html"><i class="fas fa-brain"></i> Neurology</a></li>
+                    <li><a href="orthopedics.html"><i class="fas fa-bone"></i> Orthopedics</a></li>
+                    <li><a href="pediatrics.html"><i class="fas fa-baby"></i> Pediatrics</a></li>
+                    <li><a href="general-medicine.html"><i class="fas fa-stethoscope"></i> General Medicine</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html#doctors">Doctors</a></li><li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-right"><a href="tel:5551234567" class="nav-phone"><i class="fas fa-phone"></i> (555) 123-4567</a><button class="btn-primary" onclick="openModal()">Book Appointment</button></div>
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<section class="dept-page-hero">
+    <div class="dept-hero-bg"></div><div class="dept-hero-overlay"></div>
+    <div class="container"><div class="dept-hero-content fade-in-up">
+        <div class="dept-hero-tag"><i class="fas fa-stethoscope"></i> General Medicine Department</div>
+        <h1>Your Primary Care <br>Partner for Life</h1>
+        <p>Comprehensive primary care, preventive medicine, and chronic disease management — your first step to better health starts here.</p>
+    </div></div>
+</section>
+
+<section class="highlights">
+    <div class="container"><div class="highlights-grid">
+        <div class="highlight-card reveal-text"><div class="hl-icon"><i class="fas fa-user-md"></i></div><div class="hl-text"><strong>20 Physicians</strong><span>Internists & Family Doctors</span></div></div>
+        <div class="highlight-card reveal-text delay-1"><div class="hl-icon"><i class="fas fa-calendar-day"></i></div><div class="hl-text"><strong>Same-Day</strong><span>Appointments Available</span></div></div>
+        <div class="highlight-card reveal-text delay-2"><div class="hl-icon"><i class="fas fa-video"></i></div><div class="hl-text"><strong>Telehealth</strong><span>Consult from Home</span></div></div>
+        <div class="highlight-card reveal-text delay-3"><div class="hl-icon"><i class="fas fa-star"></i></div><div class="hl-text"><strong>96%</strong><span>Patient Satisfaction</span></div></div>
+    </div></div>
+</section>
+
+<section class="content-section">
+    <div class="container"><div class="content-grid">
+        <div class="main-content">
+            <div class="dept-gallery reveal-text">
+                <img src="https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=400&q=80" alt="Doctor Consultation" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=400&q=80" alt="Lab Tests" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=80" alt="Patient Care" loading="lazy">
+            </div>
+
+            <h2 class="reveal-text delay-1">Comprehensive Primary Care</h2>
+            <p class="reveal-text delay-2">Our General Medicine Department serves as the foundation of your healthcare journey. Our board-certified internists and family medicine physicians provide comprehensive primary care for adults, focusing on prevention, early detection, and management of both common and complex medical conditions.</p>
+            <p class="reveal-text delay-3">We build long-term relationships with our patients — getting to know your health history, lifestyle, and goals to provide truly personalized care that keeps you healthy throughout your life.</p>
+
+            <h3 class="reveal-text">Our General Medicine Services</h3>
+            <div class="services-grid reveal-text delay-1">
+                <div class="service-item"><i class="fas fa-user-check"></i><span>Annual Physical Examinations</span></div>
+                <div class="service-item"><i class="fas fa-shield-alt"></i><span>Preventive Care & Wellness</span></div>
+                <div class="service-item"><i class="fas fa-virus"></i><span>Acute Illness Diagnosis & Treatment</span></div>
+                <div class="service-item"><i class="fas fa-pills"></i><span>Chronic Disease Management</span></div>
+                <div class="service-item"><i class="fas fa-syringe"></i><span>Vaccinations & Immunizations</span></div>
+                <div class="service-item"><i class="fas fa-flask"></i><span>Lab Testing & Diagnostics</span></div>
+                <div class="service-item"><i class="fas fa-heartbeat"></i><span>Cardiovascular Risk Assessment</span></div>
+                <div class="service-item"><i class="fas fa-female"></i><span>Women's Health Services</span></div>
+                <div class="service-item"><i class="fas fa-male"></i><span>Men's Health Services</span></div>
+                <div class="service-item"><i class="fas fa-user-clock"></i><span>Geriatric Medicine</span></div>
+                <div class="service-item"><i class="fas fa-video"></i><span>Telemedicine Consultations</span></div>
+                <div class="service-item"><i class="fas fa-plane"></i><span>Travel Medicine & Vaccines</span></div>
+            </div>
+
+            <h3 class="reveal-text">Conditions We Treat</h3>
+            <ul class="reveal-text delay-1">
+                <li>Hypertension (high blood pressure) and diabetes</li>
+                <li>High cholesterol and lipid disorders</li>
+                <li>Thyroid disorders and hormonal imbalances</li>
+                <li>Respiratory infections, asthma, and COPD</li>
+                <li>Digestive disorders and gastrointestinal issues</li>
+                <li>Anemia, obesity, and weight management</li>
+                <li>Anxiety, depression, and sleep disorders</li>
+                <li>Skin conditions, rashes, and allergies</li>
+                <li>Arthritis, joint pain, and osteoporosis</li>
+                <li>Fatigue, headaches, and general weakness</li>
             </ul>
-            <button class="btn-primary">Book Appointment</button>
-        </div>
-    </nav>
 
-    <section class="page-hero">
-        <div class="page-hero-content">
-            <h1 class="fade-in-up">⚕️ General Medicine Department</h1>
-            <p class="fade-in-up delay-1">Your trusted partner for comprehensive primary care, preventive medicine, and the diagnosis and treatment of common health conditions</p>
-        </div>
-    </section>
+            <h3 class="reveal-text">Recommended Health Screenings</h3>
+            <table class="screening-table reveal-text delay-1">
+                <thead>
+                    <tr><th>Screening Test</th><th>Who Needs It</th><th>Frequency</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Blood Pressure Check</td><td>All adults 18+</td><td>Every year</td></tr>
+                    <tr><td>Cholesterol Panel</td><td>Adults 20+</td><td>Every 4–6 years</td></tr>
+                    <tr><td>Diabetes (Blood Sugar)</td><td>Adults 45+ or overweight</td><td>Every 3 years</td></tr>
+                    <tr><td>Colorectal Cancer</td><td>Adults 50+</td><td>Every 10 years</td></tr>
+                    <tr><td>Mammogram</td><td>Women 40+</td><td>Every 1–2 years</td></tr>
+                    <tr><td>Bone Density (DEXA)</td><td>Women 65+</td><td>Every 2 years</td></tr>
+                    <tr><td>Annual Flu Vaccine</td><td>All adults</td><td>Every year</td></tr>
+                </tbody>
+            </table>
 
-    <section class="content-section">
-        <div class="container">
-            <div class="content-grid">
-                <div class="main-content">
-                    <h2 class="reveal-text">Comprehensive Primary Care</h2>
-                    <p class="reveal-text delay-1">Our General Medicine Department serves as the foundation of your healthcare journey. Our board-certified internists and family medicine physicians provide comprehensive primary care for adults, focusing on prevention, early detection, and management of common and complex medical conditions.</p>
-                    
-                    <p class="reveal-text delay-2">We believe in building long-term relationships with our patients, getting to know your health history, lifestyle, and goals to provide personalized care that keeps you healthy throughout your life. Whether you need a routine checkup, management of chronic conditions, or diagnosis of new symptoms, we're here for you.</p>
+            <h3 class="reveal-text">Chronic Disease Management</h3>
+            <p class="reveal-text delay-1">Living with a chronic condition requires ongoing care and support. Our comprehensive chronic disease management programs are designed to help you control symptoms, prevent complications, optimize your medication, and improve your overall quality of life. We manage conditions like diabetes, hypertension, heart disease, asthma, COPD, arthritis, and many others with regular follow-ups and coordinated specialist care.</p>
 
-                    <h3 class="reveal-text delay-3">Our General Medicine Services</h3>
-                    <p class="reveal-text delay-4">We offer a comprehensive range of primary care services:</p>
-                    
-                    <ul class="reveal-text delay-5">
-                        <li>Annual physical examinations and health screenings</li>
-                        <li>Preventive care and wellness counseling</li>
-                        <li>Acute illness diagnosis and treatment</li>
-                        <li>Chronic disease management</li>
-                        <li>Vaccination and immunization services</li>
-                        <li>Health risk assessments</li>
-                        <li>Pre-operative medical clearance</li>
-                        <li>Travel medicine and vaccinations</li>
-                        <li>Women's health services</li>
-                        <li>Men's health services</li>
-                        <li>Geriatric medicine</li>
-                        <li>Minor procedures and wound care</li>
-                        <li>Laboratory testing and diagnostic services</li>
-                        <li>Medication management and review</li>
-                        <li>Specialist referrals and care coordination</li>
-                        <li>Same-day appointments for urgent needs</li>
-                    </ul>
-
-                    <h3 class="reveal-text delay-1">Common Conditions We Treat</h3>
-                    <p class="reveal-text delay-2">Our general medicine physicians diagnose and treat a wide variety of health conditions:</p>
-                    
-                    <ul class="reveal-text delay-3">
-                        <li>Hypertension (high blood pressure)</li>
-                        <li>Diabetes (Type 1 and Type 2)</li>
-                        <li>High cholesterol and lipid disorders</li>
-                        <li>Obesity and weight management</li>
-                        <li>Thyroid disorders</li>
-                        <li>Respiratory infections and chronic lung disease</li>
-                        <li>Asthma and COPD</li>
-                        <li>Digestive disorders and gastrointestinal issues</li>
-                        <li>Urinary tract infections</li>
-                        <li>Skin conditions and rashes</li>
-                        <li>Arthritis and joint pain</li>
-                        <li>Anemia and blood disorders</li>
-                        <li>Osteoporosis</li>
-                        <li>Anxiety and depression</li>
-                        <li>Sleep disorders</li>
-                        <li>Allergies</li>
-                        <li>Headaches and migraines</li>
-                        <li>Fatigue and weakness</li>
-                    </ul>
-
-                    <h3 class="reveal-text delay-4">Preventive Care & Wellness</h3>
-                    <p class="reveal-text delay-5">Prevention is the cornerstone of good health. Our preventive care services are designed to detect health issues early and help you maintain optimal wellness:</p>
-                    
-                    <ul class="reveal-text delay-1">
-                        <li>Comprehensive health screenings based on age and risk factors</li>
-                        <li>Cancer screenings (colorectal, breast, cervical, prostate)</li>
-                        <li>Cardiovascular risk assessment</li>
-                        <li>Diabetes screening and prevention</li>
-                        <li>Bone density testing</li>
-                        <li>Immunizations for adults (flu, pneumonia, shingles, etc.)</li>
-                        <li>Nutrition and diet counseling</li>
-                        <li>Exercise and fitness guidance</li>
-                        <li>Smoking cessation programs</li>
-                        <li>Alcohol and substance use counseling</li>
-                        <li>Stress management techniques</li>
-                        <li>Sleep hygiene education</li>
-                    </ul>
-
-                    <h3 class="reveal-text delay-2">Chronic Disease Management</h3>
-                    <p class="reveal-text delay-3">Living with a chronic condition requires ongoing care and support. Our chronic disease management programs help you:</p>
-                    
-                    <ul class="reveal-text delay-4">
-                        <li>Control symptoms and prevent complications</li>
-                        <li>Optimize medication regimens</li>
-                        <li>Monitor disease progression</li>
-                        <li>Make lifestyle modifications</li>
-                        <li>Coordinate care with specialists</li>
-                        <li>Achieve treatment goals</li>
-                    </ul>
-                    
-                    <p class="reveal-text delay-5">We provide comprehensive management for conditions like diabetes, hypertension, heart disease, asthma, COPD, arthritis, and many others, with regular follow-ups and adjustments to your treatment plan as needed.</p>
-
-                    <h3 class="reveal-text delay-1">Annual Physical Examinations</h3>
-                    <p class="reveal-text delay-2">Regular checkups are essential for maintaining good health and catching problems early. During your annual physical, we will:</p>
-                    
-                    <ul class="reveal-text delay-3">
-                        <li>Review your medical history and current medications</li>
-                        <li>Perform a comprehensive physical examination</li>
-                        <li>Check vital signs and body measurements</li>
-                        <li>Order appropriate screening tests and lab work</li>
-                        <li>Discuss preventive care recommendations</li>
-                        <li>Address any health concerns or questions</li>
-                        <li>Update immunizations as needed</li>
-                        <li>Create or update your personalized health plan</li>
-                    </ul>
-
-                    <h3 class="reveal-text delay-4">Women's & Men's Health</h3>
-                    <p class="reveal-text delay-5">We provide gender-specific health services addressing the unique needs of women and men:</p>
-                    
-                    <p class="reveal-text delay-1"><strong>Women's Health:</strong> Well-woman exams, Pap smears, breast exams, contraception counseling, menopause management, osteoporosis screening, and more.</p>
-                    
-                    <p class="reveal-text delay-2"><strong>Men's Health:</strong> Prostate health screening, testosterone level evaluation, erectile dysfunction treatment, cardiovascular risk assessment, and more.</p>
-
-                    <h3 class="reveal-text delay-3">Geriatric Medicine</h3>
-                    <p class="reveal-text delay-4">As we age, our healthcare needs change. Our geriatric medicine services address the special needs of older adults, including:</p>
-                    
-                    <ul class="reveal-text delay-5">
-                        <li>Comprehensive geriatric assessments</li>
-                        <li>Fall prevention and balance evaluation</li>
-                        <li>Memory screening and cognitive assessment</li>
-                        <li>Medication management and polypharmacy review</li>
-                        <li>Advance care planning</li>
-                        <li>Coordination with home health services</li>
-                        <li>Quality of life optimization</li>
-                    </ul>
-
-                    <h3 class="reveal-text delay-1">Your Health Partner</h3>
-                    <p class="reveal-text delay-2">Our general medicine physicians serve as your primary point of contact for all your healthcare needs. We coordinate with specialists when necessary, manage your overall care, and help you navigate the healthcare system. Think of us as your health partner, advocate, and guide on your wellness journey.</p>
-                </div>
-
-                <div class="sidebar">
-                    <div class="info-box reveal-text">
-                        <h3>Quick Information</h3>
-                        <ul>
-                            <li><strong>Department Head:</strong> Dr. James Wilson, MD</li>
-                            <li><strong>Specialists:</strong> 20 physicians</li>
-                            <li><strong>Hours:</strong> Mon-Fri 7AM-7PM, Sat 8AM-4PM</li>
-                            <li><strong>Same-Day:</strong> Appointments available</li>
-                            <li><strong>Location:</strong> 1st Floor, Central Wing</li>
-                        </ul>
-                    </div>
-
-                    <div class="info-box reveal-text delay-1">
-                        <h3>Recommended Screenings</h3>
-                        <ul>
-                            <li>Blood pressure (annual)</li>
-                            <li>Cholesterol (every 4-6 years)</li>
-                            <li>Diabetes (every 3 years after 45)</li>
-                            <li>Colorectal cancer (50+)</li>
-                            <li>Mammogram (40+, women)</li>
-                            <li>Bone density (65+, women)</li>
-                        </ul>
-                    </div>
-
-                    <div class="info-box reveal-text delay-2">
-                        <h3>What to Bring</h3>
-                        <ul>
-                            <li>Insurance card</li>
-                            <li>Photo ID</li>
-                            <li>Medication list</li>
-                            <li>Medical records (if new patient)</li>
-                            <li>List of questions/concerns</li>
-                        </ul>
-                    </div>
-
-                    <div class="info-box reveal-text delay-3">
-                        <h3>Establish Care Today</h3>
-                        <p>Start your journey to better health with our expert team.</p>
-                        <button class="btn-primary">Book Now</button>
-                    </div>
-                </div>
+            <h3 class="reveal-text">Meet Our General Medicine Team</h3>
+            <div class="team-grid reveal-text delay-1">
+                <div class="team-card"><img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=200&q=80" alt="Dr. James Wilson"><div><strong>Dr. James Wilson, MD</strong><span>Head of General Medicine · 22 yrs</span></div></div>
+                <div class="team-card"><img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200&q=80" alt="Dr. Ananya Bose"><div><strong>Dr. Ananya Bose, MD</strong><span>Internist · Women's Health · 15 yrs</span></div></div>
+                <div class="team-card"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80" alt="Dr. Thomas Grant"><div><strong>Dr. Thomas Grant, MD</strong><span>Geriatric Medicine · 12 yrs</span></div></div>
+                <div class="team-card"><img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=200&q=80" alt="Dr. Meena Iyer"><div><strong>Dr. Meena Iyer, MD</strong><span>Diabetes & Endocrinology · 10 yrs</span></div></div>
             </div>
         </div>
-    </section>
 
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2 class="reveal-text">Your Health Starts Here</h2>
-                <p class="reveal-text delay-1">Partner with us for comprehensive primary care that keeps you healthy for life.</p>
-                <button class="btn-primary large reveal-text delay-2">Schedule Your Visit</button>
+        <div class="sidebar">
+            <div class="info-box reveal-text">
+                <h3>Quick Information</h3>
+                <ul>
+                    <li><strong>Department Head:</strong> Dr. James Wilson</li>
+                    <li><strong>Specialists:</strong> 20 physicians</li>
+                    <li><strong>Hours:</strong> Mon–Fri 7AM–7PM, Sat 8AM–4PM</li>
+                    <li><strong>Same-Day:</strong> Available</li>
+                    <li><strong>Location:</strong> 1st Floor, Central Wing</li>
+                </ul>
+            </div>
+            <div class="info-box reveal-text delay-1">
+                <h3>Why Get a Checkup?</h3>
+                <ul>
+                    <li>Catch problems before symptoms appear</li>
+                    <li>Update vaccinations on time</li>
+                    <li>Monitor chronic conditions</li>
+                    <li>Review medications regularly</li>
+                    <li>Get personalized health plan</li>
+                </ul>
+            </div>
+            <div class="info-box reveal-text delay-2">
+                <h3>What to Bring</h3>
+                <ul>
+                    <li>Insurance card &amp; photo ID</li>
+                    <li>Medication list</li>
+                    <li>Previous medical records</li>
+                    <li>List of questions/concerns</li>
+                </ul>
+            </div>
+            <div class="info-box reveal-text delay-3" style="background:linear-gradient(135deg,#022c22,#065f46);border-color:transparent;">
+                <h3 style="color:white;">Start Your Health Journey</h3>
+                <p style="color:rgba(255,255,255,0.8)">Partner with us for comprehensive care that keeps you healthy for life.</p>
+                <button class="btn-white" onclick="openModal()" style="margin-top:1.25rem;width:100%;justify-content:center;"><i class="fas fa-calendar-plus"></i> Book Now</button>
             </div>
         </div>
-    </section>
+    </div></div>
+</section>
 
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="logo">
-                        <div class="logo-icon">M</div>
-                        <span>MediCare Excellence</span>
-                    </div>
-                    <p>Providing exceptional healthcare services with compassion and excellence since 1995.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="index.html#departments">Departments</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">News</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Departments</h4>
-                    <ul>
-                        <li><a href="cardiology.html">Cardiology</a></li>
-                        <li><a href="neurology.html">Neurology</a></li>
-                        <li><a href="orthopedics.html">Orthopedics</a></li>
-                        <li><a href="pediatrics.html">Pediatrics</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li>123 Medical Plaza Drive</li>
-                        <li>Healthcare City, HC 12345</li>
-                        <li>Phone: (555) 123-4567</li>
-                        <li>Email: info@medicare.com</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 MediCare Excellence. All rights reserved.</p>
-            </div>
+<section class="cta-section">
+    <div class="cta-bg" style="background-image:url('https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=1600&q=80')"></div>
+    <div class="cta-overlay"></div>
+    <div class="container"><div class="cta-content reveal-text">
+        <h2>Your Health Starts Here</h2>
+        <p>Partner with us for comprehensive primary care that keeps you healthy for life.</p>
+        <div class="cta-actions">
+            <button class="btn-white large" onclick="openModal()"><i class="fas fa-calendar-check"></i> Schedule Your Visit</button>
+            <a href="tel:5551234567" class="btn-outline-white large"><i class="fas fa-phone"></i> (555) 123-4567</a>
         </div>
-    </footer>
+    </div></div>
+</section>
 
-    <script src="script.js"></script>
+<footer id="contact">
+    <div class="footer-top"><div class="container"><div class="footer-grid">
+        <div class="footer-brand"><a href="index.html" class="logo"><div class="logo-icon"><i class="fas fa-heartbeat"></i></div><span>MediCare <em>Excellence</em></span></a><p>Providing exceptional healthcare services with compassion and innovation since 1995.</p><div class="footer-socials"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div></div>
+        <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li><li><a href="index.html#departments"><i class="fas fa-chevron-right"></i> Departments</a></li><li><a href="index.html#doctors"><i class="fas fa-chevron-right"></i> Our Doctors</a></li><li><a href="#"><i class="fas fa-chevron-right"></i> Careers</a></li></ul></div>
+        <div class="footer-col"><h4>Departments</h4><ul><li><a href="cardiology.html"><i class="fas fa-chevron-right"></i> Cardiology</a></li><li><a href="neurology.html"><i class="fas fa-chevron-right"></i> Neurology</a></li><li><a href="orthopedics.html"><i class="fas fa-chevron-right"></i> Orthopedics</a></li><li><a href="pediatrics.html"><i class="fas fa-chevron-right"></i> Pediatrics</a></li><li><a href="general-medicine.html"><i class="fas fa-chevron-right"></i> General Medicine</a></li></ul></div>
+        <div class="footer-col"><h4>Contact Us</h4><div class="footer-contact"><div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>123 Medical Plaza Drive, Healthcare City</span></div><div class="contact-item"><i class="fas fa-phone"></i><span>(555) 123-4567</span></div><div class="contact-item"><i class="fas fa-envelope"></i><span>info@medicare.com</span></div><div class="contact-item"><i class="fas fa-clock"></i><span>Emergency: 24/7</span></div></div></div>
+    </div></div></div>
+    <div class="footer-bottom"><div class="container"><p>&copy; 2024 MediCare Excellence. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms</a></div></div></div>
+</footer>
+<button class="scroll-top" id="scrollTop" onclick="scrollToTop()"><i class="fas fa-chevron-up"></i></button>
+<script src="script.js"></script>
 </body>
 </html>

@@ -5,218 +5,380 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cardiology Department - MediCare Excellence</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .dept-page-hero {
+            position: relative; padding: 8rem 0 4rem; overflow: hidden;
+            min-height: 380px; display: flex; align-items: flex-end;
+        }
+        .dept-hero-bg {
+            position: absolute; inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?w=1600&q=80');
+            background-size: cover; background-position: center;
+        }
+        .dept-hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to right, rgba(5,52,68,0.92) 40%, rgba(5,52,68,0.6) 100%);
+        }
+        .dept-hero-content { position: relative; z-index: 1; padding-bottom: 3rem; }
+        .dept-hero-tag {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
+            color: white; font-size: 0.85rem; font-weight: 600;
+            padding: 0.4rem 1rem; border-radius: 50px; margin-bottom: 1.25rem;
+        }
+        .dept-hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.5rem); color: white; margin-bottom: 1rem;
+        }
+        .dept-hero-content p { color: rgba(255,255,255,0.85); max-width: 600px; font-size: 1.05rem; }
+
+        /* Highlight cards */
+        .highlights { padding: 3rem 0; background: var(--bg-light); border-bottom: 1px solid var(--border); }
+        .highlights-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+        .highlight-card {
+            background: white; border-radius: var(--radius); padding: 1.5rem;
+            display: flex; align-items: center; gap: 1rem;
+            border: 1.5px solid var(--border);
+        }
+        .hl-icon {
+            width: 48px; height: 48px; flex-shrink: 0; border-radius: 14px;
+            background: linear-gradient(135deg, #ef4444, #f97316);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.25rem; color: white;
+        }
+        .hl-text strong { display: block; font-size: 1.1rem; font-weight: 700; color: var(--text-dark); }
+        .hl-text span { font-size: 0.8rem; color: var(--text-light); }
+
+        /* Services grid */
+        .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0; }
+        .service-item {
+            display: flex; align-items: flex-start; gap: 0.75rem;
+            background: var(--bg-light); border-radius: 10px; padding: 1rem;
+        }
+        .service-item i { color: var(--primary-light); margin-top: 0.15rem; flex-shrink: 0; }
+        .service-item span { font-size: 0.9rem; color: var(--text-mid); font-weight: 500; }
+
+        /* Doctors mini */
+        .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin: 1.5rem 0; }
+        .team-card {
+            display: flex; gap: 1rem; align-items: center;
+            background: white; border-radius: var(--radius); padding: 1rem;
+            border: 1.5px solid var(--border);
+        }
+        .team-card img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+        .team-card strong { display: block; font-size: 0.92rem; color: var(--text-dark); }
+        .team-card span { font-size: 0.78rem; color: var(--text-light); }
+
+        /* Gallery */
+        .dept-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin: 1.5rem 0; }
+        .dept-gallery img { border-radius: var(--radius); height: 140px; object-fit: cover; }
+
+        @media (max-width: 768px) {
+            .highlights-grid { grid-template-columns: repeat(2, 1fr); }
+            .services-grid { grid-template-columns: 1fr; }
+            .team-grid { grid-template-columns: 1fr; }
+            .dept-gallery { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="logo">
-                <div class="logo-icon">M</div>
-                <span>MediCare Excellence</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li class="dropdown">
-                    <a href="#departments" class="active">Departments</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="cardiology.html">Cardiology</a></li>
-                        <li><a href="neurology.html">Neurology</a></li>
-                        <li><a href="orthopedics.html">Orthopedics</a></li>
-                        <li><a href="pediatrics.html">Pediatrics</a></li>
-                        <li><a href="general-medicine.html">General Medicine</a></li>
-                    </ul>
-                </li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <button class="btn-primary">Book Appointment</button>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="appointmentModal">
+    <div class="modal">
+        <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+        <div class="modal-header">
+            <div class="modal-icon"><i class="fas fa-calendar-check"></i></div>
+            <h2>Book an Appointment</h2>
+            <p>Fill in your details and we'll confirm within 2 hours</p>
         </div>
-    </nav>
+        <form class="modal-form" onsubmit="submitForm(event)">
+            <div class="form-row">
+                <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your full name" required></div>
+                <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+91 98765 43210" required></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label>Email</label><input type="email" placeholder="you@email.com"></div>
+                <div class="form-group"><label>Department</label>
+                    <select><option>Cardiology</option><option>Neurology</option><option>Orthopedics</option><option>Pediatrics</option><option>General Medicine</option></select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label>Preferred Date</label><input type="date" required></div>
+                <div class="form-group"><label>Preferred Time</label>
+                    <select><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option></select>
+                </div>
+            </div>
+            <div class="form-group"><label>Symptoms (optional)</label><textarea placeholder="Describe your symptoms..."></textarea></div>
+            <button type="submit" class="btn-primary large full-width"><i class="fas fa-check-circle"></i> Confirm Appointment</button>
+        </form>
+    </div>
+</div>
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span>Appointment booked! We'll confirm shortly.</span></div>
 
-    <section class="page-hero">
-        <div class="page-hero-content">
-            <h1 class="fade-in-up">❤️ Cardiology Department</h1>
-            <p class="fade-in-up delay-1">Comprehensive cardiovascular care combining expertise, advanced technology, and compassionate treatment for optimal heart health</p>
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+    <div class="container">
+        <a href="index.html" class="logo">
+            <div class="logo-icon"><i class="fas fa-heartbeat"></i></div>
+            <span>MediCare <em>Excellence</em></span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li class="dropdown">
+                <a href="#" class="active">Departments <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="cardiology.html"><i class="fas fa-heart"></i> Cardiology</a></li>
+                    <li><a href="neurology.html"><i class="fas fa-brain"></i> Neurology</a></li>
+                    <li><a href="orthopedics.html"><i class="fas fa-bone"></i> Orthopedics</a></li>
+                    <li><a href="pediatrics.html"><i class="fas fa-baby"></i> Pediatrics</a></li>
+                    <li><a href="general-medicine.html"><i class="fas fa-stethoscope"></i> General Medicine</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html#doctors">Doctors</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+            <a href="tel:5551234567" class="nav-phone"><i class="fas fa-phone"></i> (555) 123-4567</a>
+            <button class="btn-primary" onclick="openModal()">Book Appointment</button>
         </div>
-    </section>
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+    </div>
+</nav>
 
-    <section class="content-section">
-        <div class="container">
-            <div class="content-grid">
-                <div class="main-content">
-                    <h2 class="reveal-text">Advanced Heart Care Excellence</h2>
-                    <p class="reveal-text delay-1">Our Cardiology Department is dedicated to preventing, diagnosing, and treating all forms of cardiovascular disease. With a team of board-certified cardiologists, cutting-edge diagnostic equipment, and comprehensive treatment options, we provide personalized care for every heart condition.</p>
-                    
-                    <p class="reveal-text delay-2">Whether you're dealing with a complex cardiac condition or seeking preventive care, our cardiology team offers the expertise and compassion you need. We believe in a holistic approach to heart health, combining medical treatments with lifestyle counseling and ongoing support.</p>
+<!-- HERO -->
+<section class="dept-page-hero">
+    <div class="dept-hero-bg"></div>
+    <div class="dept-hero-overlay"></div>
+    <div class="container">
+        <div class="dept-hero-content fade-in-up">
+            <div class="dept-hero-tag"><i class="fas fa-heart"></i> Cardiology Department</div>
+            <h1>Advanced Heart Care <br>You Can Trust</h1>
+            <p>Comprehensive cardiovascular care combining expertise, advanced technology, and compassionate treatment for optimal heart health.</p>
+        </div>
+    </div>
+</section>
 
-                    <h3 class="reveal-text delay-3">Our Cardiology Services</h3>
-                    <p class="reveal-text delay-4">We offer a complete range of cardiovascular services, from routine screenings to advanced interventional procedures:</p>
-                    
-                    <ul class="reveal-text delay-5">
-                        <li>Comprehensive cardiovascular risk assessment and prevention programs</li>
-                        <li>Non-invasive cardiac testing including EKG, echocardiography, and stress testing</li>
-                        <li>Advanced cardiac imaging with CT angiography and cardiac MRI</li>
-                        <li>24-hour Holter monitoring and event recorders for arrhythmia detection</li>
-                        <li>Coronary angiography and cardiac catheterization procedures</li>
-                        <li>Interventional cardiology including angioplasty and stent placement</li>
-                        <li>Heart failure management and treatment programs</li>
-                        <li>Arrhythmia diagnosis and treatment including ablation procedures</li>
-                        <li>Pacemaker and defibrillator implantation and monitoring</li>
-                        <li>Valvular heart disease diagnosis and management</li>
-                        <li>Hypertension management and medication optimization</li>
-                        <li>Lipid management and cholesterol treatment</li>
-                        <li>Cardiac rehabilitation programs</li>
-                        <li>Pre-operative cardiac clearance evaluations</li>
-                    </ul>
+<!-- HIGHLIGHTS -->
+<section class="highlights">
+    <div class="container">
+        <div class="highlights-grid">
+            <div class="highlight-card reveal-text">
+                <div class="hl-icon"><i class="fas fa-user-md"></i></div>
+                <div class="hl-text"><strong>12 Specialists</strong><span>Board-Certified Cardiologists</span></div>
+            </div>
+            <div class="highlight-card reveal-text delay-1">
+                <div class="hl-icon"><i class="fas fa-procedures"></i></div>
+                <div class="hl-text"><strong>5,000+</strong><span>Cardiac Procedures / Year</span></div>
+            </div>
+            <div class="highlight-card reveal-text delay-2">
+                <div class="hl-icon"><i class="fas fa-clock"></i></div>
+                <div class="hl-text"><strong>24/7</strong><span>Emergency Cardiac Care</span></div>
+            </div>
+            <div class="highlight-card reveal-text delay-3">
+                <div class="hl-icon"><i class="fas fa-star"></i></div>
+                <div class="hl-text"><strong>98.5%</strong><span>Patient Satisfaction Rate</span></div>
+            </div>
+        </div>
+    </div>
+</section>
 
-                    <h3 class="reveal-text delay-1">Conditions We Treat</h3>
-                    <p class="reveal-text delay-2">Our cardiologists have extensive experience treating a wide range of heart conditions:</p>
-                    
-                    <ul class="reveal-text delay-3">
-                        <li>Coronary artery disease and atherosclerosis</li>
-                        <li>Heart attack (myocardial infarction) acute and post-care</li>
-                        <li>Heart failure and cardiomyopathy</li>
-                        <li>Heart valve disorders including stenosis and regurgitation</li>
-                        <li>Arrhythmias including atrial fibrillation and ventricular tachycardia</li>
-                        <li>Congenital heart defects in adults</li>
-                        <li>Peripheral artery disease</li>
-                        <li>High blood pressure and hypertensive heart disease</li>
-                        <li>High cholesterol and lipid disorders</li>
-                        <li>Aortic aneurysms and dissections</li>
-                        <li>Pericardial disease</li>
-                        <li>Chest pain and angina</li>
-                    </ul>
-
-                    <h3 class="reveal-text delay-4">State-of-the-Art Technology</h3>
-                    <p class="reveal-text delay-5">Our cardiology department features the latest medical technology to ensure accurate diagnoses and effective treatments:</p>
-                    
-                    <ul class="reveal-text delay-1">
-                        <li>Advanced 3D echocardiography for detailed heart imaging</li>
-                        <li>256-slice cardiac CT scanner for non-invasive coronary imaging</li>
-                        <li>Cardiac MRI for comprehensive structural and functional assessment</li>
-                        <li>Digital cardiac catheterization lab with rotational angiography</li>
-                        <li>Intravascular ultrasound (IVUS) for precise vessel assessment</li>
-                        <li>Fractional flow reserve (FFR) technology for optimal stent placement</li>
-                        <li>Electrophysiology lab for complex arrhythmia mapping and ablation</li>
-                        <li>Remote cardiac monitoring systems for continuous patient care</li>
-                    </ul>
-
-                    <h3 class="reveal-text delay-2">Meet Our Cardiology Team</h3>
-                    <p class="reveal-text delay-3">Our team consists of highly trained cardiologists, interventional specialists, electrophysiologists, and cardiovascular nurses who work collaboratively to provide exceptional care. Each physician is board-certified and maintains active involvement in cardiology research and continuing medical education.</p>
-                    
-                    <p class="reveal-text delay-4">We believe in a team-based approach to cardiac care, bringing together specialists from various disciplines to develop comprehensive treatment plans tailored to each patient's unique needs.</p>
-
-                    <h3 class="reveal-text delay-5">Cardiac Rehabilitation Program</h3>
-                    <p class="reveal-text delay-1">Recovery from a cardiac event or procedure is a journey, and we're with you every step of the way. Our cardiac rehabilitation program combines supervised exercise, nutrition counseling, stress management, and education to help you regain strength, reduce risk factors, and improve your quality of life.</p>
-                    
-                    <p class="reveal-text delay-2">The program is personalized to your specific condition and fitness level, with experienced cardiac rehabilitation specialists monitoring your progress and adjusting your plan as needed.</p>
-
-                    <h3 class="reveal-text delay-3">Prevention & Wellness</h3>
-                    <p class="reveal-text delay-4">Prevention is the best medicine for heart disease. We offer comprehensive cardiovascular risk assessments that evaluate your family history, lifestyle factors, blood pressure, cholesterol levels, and other risk factors to create a personalized prevention plan.</p>
-                    
-                    <p class="reveal-text delay-5">Our preventive cardiology services include dietary counseling, exercise prescription, smoking cessation support, stress management techniques, and medication management to help you maintain optimal heart health and prevent future cardiovascular problems.</p>
+<!-- MAIN CONTENT -->
+<section class="content-section">
+    <div class="container">
+        <div class="content-grid">
+            <div class="main-content">
+                <!-- Gallery -->
+                <div class="dept-gallery reveal-text">
+                    <img src="https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?w=400&q=80" alt="Cath Lab" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=400&q=80" alt="Cardiac Imaging" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=400&q=80" alt="Consultation" loading="lazy">
                 </div>
 
-                <div class="sidebar">
-                    <div class="info-box reveal-text">
-                        <h3>Quick Information</h3>
-                        <ul>
-                            <li><strong>Department Head:</strong> Dr. Sarah Johnson, MD</li>
-                            <li><strong>Specialists:</strong> 12 cardiologists</li>
-                            <li><strong>Hours:</strong> Mon-Fri 8AM-6PM</li>
-                            <li><strong>Emergency:</strong> 24/7 available</li>
-                            <li><strong>Location:</strong> 3rd Floor, East Wing</li>
-                        </ul>
-                    </div>
+                <h2 class="reveal-text delay-1">Advanced Heart Care Excellence</h2>
+                <p class="reveal-text delay-2">Our Cardiology Department is dedicated to preventing, diagnosing, and treating all forms of cardiovascular disease. With a team of board-certified cardiologists, cutting-edge diagnostic equipment, and comprehensive treatment options, we provide personalized care for every heart condition.</p>
+                <p class="reveal-text delay-3">We believe in a holistic approach to heart health — combining the latest medical treatments with lifestyle counseling, rehabilitation, and ongoing support tailored to you.</p>
 
-                    <div class="info-box reveal-text delay-1">
-                        <h3>When to See a Cardiologist</h3>
-                        <ul>
-                            <li>Chest pain or discomfort</li>
-                            <li>Shortness of breath</li>
-                            <li>Irregular heartbeat</li>
-                            <li>High blood pressure</li>
-                            <li>High cholesterol</li>
-                            <li>Family history of heart disease</li>
-                            <li>Diabetes or other risk factors</li>
-                        </ul>
-                    </div>
+                <h3 class="reveal-text">Our Cardiology Services</h3>
+                <div class="services-grid reveal-text delay-1">
+                    <div class="service-item"><i class="fas fa-heartbeat"></i><span>Cardiovascular Risk Assessment</span></div>
+                    <div class="service-item"><i class="fas fa-wave-square"></i><span>EKG & Echocardiography</span></div>
+                    <div class="service-item"><i class="fas fa-x-ray"></i><span>Cardiac CT & MRI Imaging</span></div>
+                    <div class="service-item"><i class="fas fa-clock"></i><span>24-hr Holter Monitoring</span></div>
+                    <div class="service-item"><i class="fas fa-syringe"></i><span>Coronary Angiography</span></div>
+                    <div class="service-item"><i class="fas fa-expand-arrows-alt"></i><span>Angioplasty & Stenting</span></div>
+                    <div class="service-item"><i class="fas fa-tachometer-alt"></i><span>Pacemaker Implantation</span></div>
+                    <div class="service-item"><i class="fas fa-redo"></i><span>Cardiac Rehabilitation</span></div>
+                    <div class="service-item"><i class="fas fa-heart-broken"></i><span>Heart Failure Management</span></div>
+                    <div class="service-item"><i class="fas fa-tablets"></i><span>Lipid & BP Management</span></div>
+                </div>
 
-                    <div class="info-box reveal-text delay-2">
-                        <h3>What to Bring</h3>
-                        <ul>
-                            <li>Insurance information</li>
-                            <li>List of current medications</li>
-                            <li>Previous test results</li>
-                            <li>Family medical history</li>
-                            <li>Questions for your doctor</li>
-                        </ul>
-                    </div>
+                <h3 class="reveal-text">Conditions We Treat</h3>
+                <ul class="reveal-text delay-1">
+                    <li>Coronary artery disease and atherosclerosis</li>
+                    <li>Heart attack (myocardial infarction) — acute and post-care</li>
+                    <li>Heart failure and cardiomyopathy</li>
+                    <li>Arrhythmias including atrial fibrillation</li>
+                    <li>Valvular heart disease (stenosis and regurgitation)</li>
+                    <li>High blood pressure and hypertensive heart disease</li>
+                    <li>Peripheral artery disease and aortic aneurysms</li>
+                    <li>Congenital heart defects in adults</li>
+                    <li>Chest pain, angina, and pericardial disease</li>
+                </ul>
 
-                    <div class="info-box reveal-text delay-3">
-                        <h3>Schedule Your Appointment</h3>
-                        <p>Take the first step towards better heart health. Our team is ready to help.</p>
-                        <button class="btn-primary">Book Now</button>
+                <h3 class="reveal-text">Meet Our Cardiology Team</h3>
+                <div class="team-grid reveal-text delay-1">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80" alt="Dr. Sarah Johnson">
+                        <div><strong>Dr. Sarah Johnson, MD</strong><span>Head of Cardiology · FACC · 18 yrs</span></div>
                     </div>
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=200&q=80" alt="Dr. Alan Park">
+                        <div><strong>Dr. Alan Park, MD</strong><span>Interventional Cardiologist · 14 yrs</span></div>
+                    </div>
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=200&q=80" alt="Dr. Meera Patel">
+                        <div><strong>Dr. Meera Patel, MD</strong><span>Electrophysiologist · 11 yrs</span></div>
+                    </div>
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200&q=80" alt="Dr. Lakshmi Rao">
+                        <div><strong>Dr. Lakshmi Rao, MD</strong><span>Preventive Cardiologist · 10 yrs</span></div>
+                    </div>
+                </div>
+
+                <h3 class="reveal-text">State-of-the-Art Technology</h3>
+                <p class="reveal-text delay-1">Our cardiology department features the most advanced technology for precise, non-invasive diagnoses and minimally invasive treatments — including a 256-slice cardiac CT, advanced 3D echocardiography, digital cardiac cath lab with rotational angiography, intravascular ultrasound (IVUS), and fractional flow reserve (FFR) technology.</p>
+
+                <h3 class="reveal-text">Cardiac Rehabilitation Program</h3>
+                <p class="reveal-text delay-1">Recovery from a cardiac event is a journey, and we're with you every step. Our personalised rehab program combines supervised exercise, nutrition counseling, stress management, and education — helping you regain strength, reduce risk factors, and improve quality of life.</p>
+            </div>
+
+            <!-- SIDEBAR -->
+            <div class="sidebar">
+                <div class="info-box reveal-text">
+                    <h3>Quick Information</h3>
+                    <ul>
+                        <li><strong>Department Head:</strong> Dr. Sarah Johnson</li>
+                        <li><strong>Specialists:</strong> 12 cardiologists</li>
+                        <li><strong>Hours:</strong> Mon–Fri 8AM–6PM</li>
+                        <li><strong>Emergency:</strong> 24/7 available</li>
+                        <li><strong>Location:</strong> 3rd Floor, East Wing</li>
+                    </ul>
+                </div>
+                <div class="info-box reveal-text delay-1">
+                    <h3><i class="fas fa-exclamation-triangle" style="color:#ef4444;margin-right:0.4rem"></i>Warning Signs</h3>
+                    <ul>
+                        <li>Chest pain or tightness</li>
+                        <li>Shortness of breath</li>
+                        <li>Irregular heartbeat</li>
+                        <li>High blood pressure</li>
+                        <li>High cholesterol</li>
+                        <li>Family history of heart disease</li>
+                    </ul>
+                    <p style="margin-top:1rem;font-size:0.85rem;color:#ef4444;font-weight:600;"><i class="fas fa-phone"></i> Call 911 for emergencies</p>
+                </div>
+                <div class="info-box reveal-text delay-2">
+                    <h3>What to Bring</h3>
+                    <ul>
+                        <li>Insurance information</li>
+                        <li>List of current medications</li>
+                        <li>Previous test results / ECGs</li>
+                        <li>Family medical history</li>
+                    </ul>
+                </div>
+                <div class="info-box reveal-text delay-3" style="background: linear-gradient(135deg,var(--primary-dark),var(--primary)); border-color:transparent;">
+                    <h3 style="color:white;">Book Your Appointment</h3>
+                    <p style="color:rgba(255,255,255,0.8)">Take the first step towards better heart health. Our team is ready to help.</p>
+                    <button class="btn-white" onclick="openModal()" style="margin-top:1.25rem;width:100%;justify-content:center;">
+                        <i class="fas fa-calendar-plus"></i> Book Now
+                    </button>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2 class="reveal-text">Your Heart Health Matters</h2>
-                <p class="reveal-text delay-1">Don't wait to prioritize your cardiovascular health. Schedule a consultation with our expert cardiology team today.</p>
-                <button class="btn-primary large reveal-text delay-2">Schedule Consultation</button>
+<!-- CTA -->
+<section class="cta-section">
+    <div class="cta-bg" style="background-image: url('https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?w=1600&q=80')"></div>
+    <div class="cta-overlay"></div>
+    <div class="container">
+        <div class="cta-content reveal-text">
+            <h2>Your Heart Health Matters</h2>
+            <p>Don't wait to prioritize your cardiovascular health. Schedule a consultation today.</p>
+            <div class="cta-actions">
+                <button class="btn-white large" onclick="openModal()"><i class="fas fa-calendar-check"></i> Schedule Consultation</button>
+                <a href="tel:5551234567" class="btn-outline-white large"><i class="fas fa-phone"></i> (555) 123-4567</a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer id="contact">
+<!-- FOOTER -->
+<footer id="contact">
+    <div class="footer-top">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="logo">
-                        <div class="logo-icon">M</div>
-                        <span>MediCare Excellence</span>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon"><i class="fas fa-heartbeat"></i></div>
+                        <span>MediCare <em>Excellence</em></span>
+                    </a>
+                    <p>Providing exceptional healthcare services with compassion and innovation since 1995.</p>
+                    <div class="footer-socials">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
-                    <p>Providing exceptional healthcare services with compassion and excellence since 1995.</p>
                 </div>
-                <div class="footer-section">
+                <div class="footer-col">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="index.html#departments">Departments</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">News</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="index.html#departments"><i class="fas fa-chevron-right"></i> Departments</a></li>
+                        <li><a href="index.html#doctors"><i class="fas fa-chevron-right"></i> Our Doctors</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Careers</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
+                <div class="footer-col">
                     <h4>Departments</h4>
                     <ul>
-                        <li><a href="cardiology.html">Cardiology</a></li>
-                        <li><a href="neurology.html">Neurology</a></li>
-                        <li><a href="orthopedics.html">Orthopedics</a></li>
-                        <li><a href="pediatrics.html">Pediatrics</a></li>
+                        <li><a href="cardiology.html"><i class="fas fa-chevron-right"></i> Cardiology</a></li>
+                        <li><a href="neurology.html"><i class="fas fa-chevron-right"></i> Neurology</a></li>
+                        <li><a href="orthopedics.html"><i class="fas fa-chevron-right"></i> Orthopedics</a></li>
+                        <li><a href="pediatrics.html"><i class="fas fa-chevron-right"></i> Pediatrics</a></li>
+                        <li><a href="general-medicine.html"><i class="fas fa-chevron-right"></i> General Medicine</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li>123 Medical Plaza Drive</li>
-                        <li>Healthcare City, HC 12345</li>
-                        <li>Phone: (555) 123-4567</li>
-                        <li>Email: info@medicare.com</li>
-                    </ul>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <div class="footer-contact">
+                        <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>123 Medical Plaza Drive, Healthcare City</span></div>
+                        <div class="contact-item"><i class="fas fa-phone"></i><span>(555) 123-4567</span></div>
+                        <div class="contact-item"><i class="fas fa-envelope"></i><span>info@medicare.com</span></div>
+                        <div class="contact-item"><i class="fas fa-clock"></i><span>Emergency: 24/7</span></div>
+                    </div>
                 </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 MediCare Excellence. All rights reserved.</p>
             </div>
         </div>
-    </footer>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2024 MediCare Excellence. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms</a>
+            </div>
+        </div>
+    </div>
+</footer>
 
-    <script src="script.js"></script>
+<button class="scroll-top" id="scrollTop" onclick="scrollToTop()"><i class="fas fa-chevron-up"></i></button>
+
+<script src="script.js"></script>
 </body>
 </html>
