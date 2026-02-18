@@ -156,7 +156,11 @@ img { display: block; width: 100%; object-fit: cover; }
     border-color: var(--primary);
     background: transparent;
 }
-.btn-outline-sm:hover { background: var(--primary); color: white; }
+.btn-outline-sm:hover { 
+    background: var(--primary); 
+    color: white;
+    box-shadow: 0 4px 15px rgba(10,77,104,0.3);
+}
 
 .btn-primary.large, .btn-outline.large, .btn-white.large,
 .btn-outline-white.large { padding: 1rem 2.5rem; font-size: 1.05rem; }
