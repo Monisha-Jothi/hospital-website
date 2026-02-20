@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - MediCare Excellence</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-hero { position:relative; padding:9rem 0 4rem; min-height:300px; display:flex; align-items:center; background:linear-gradient(135deg,#053444 0%,#0891b2 100%); }
+        .page-hero-content { position:relative; z-index:1; }
+        .page-hero-content h1 { font-family:'Playfair Display',serif; font-size:clamp(2rem,4vw,3rem); color:white; margin-bottom:0.75rem; }
+        .page-hero-content p { color:rgba(255,255,255,0.8); }
+        .policy-section { padding:5rem 0; background:#f8fafc; }
+        .policy-layout { display:grid; grid-template-columns:260px 1fr; gap:3rem; align-items:start; }
+        .policy-nav { background:white; border-radius:1.25rem; padding:1.5rem; position:sticky; top:100px; box-shadow:0 2px 12px rgba(0,0,0,0.06); }
+        .policy-nav h4 { font-family:'Playfair Display',serif; font-size:1rem; margin-bottom:1rem; padding-bottom:0.75rem; border-bottom:2px solid #f1f5f9; }
+        .policy-nav a { display:block; padding:0.5rem 0; font-size:0.88rem; color:#64748b; text-decoration:none; border-bottom:1px solid #f8fafc; transition:color 0.2s; }
+        .policy-nav a:hover { color:var(--primary,#053444); }
+        .policy-content { background:white; border-radius:1.25rem; padding:3rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); }
+        .policy-content h2 { font-family:'Playfair Display',serif; font-size:1.5rem; margin:2.5rem 0 0.75rem; padding-top:2rem; border-top:1px solid #f1f5f9; }
+        .policy-content h2:first-child { margin-top:0; padding-top:0; border-top:none; }
+        .policy-content p { color:#64748b; line-height:1.85; margin-bottom:1rem; }
+        .policy-content ul { padding-left:1.5rem; color:#64748b; line-height:2; margin-bottom:1rem; }
+        .last-updated { display:inline-flex; align-items:center; gap:0.5rem; background:#e0f2fe; color:#0369a1; padding:0.4rem 1rem; border-radius:2rem; font-size:0.82rem; font-weight:600; margin-bottom:1.5rem; }
+        @media(max-width:768px){ .policy-layout { grid-template-columns:1fr; } .policy-nav { position:relative; top:0; } }
+    </style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+    <div class="container">
+        <a href="../index.html" class="logo"><div class="logo-icon"><i class="fas fa-heartbeat"></i></div><span>MediCare <em>Excellence</em></span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="../index.html">Home</a></li><li><a href="../about.html">About</a></li>
+            <li class="dropdown"><a href="#">Departments <i class="fas fa-chevron-down"></i></a><ul class="dropdown-menu"><li><a href="../cardiology.html"><i class="fas fa-heart"></i> Cardiology</a></li><li><a href="../neurology.html"><i class="fas fa-brain"></i> Neurology</a></li><li><a href="../orthopedics.html"><i class="fas fa-bone"></i> Orthopedics</a></li><li><a href="../pediatrics.html"><i class="fas fa-baby"></i> Pediatrics</a></li><li><a href="../general-medicine.html"><i class="fas fa-stethoscope"></i> General Medicine</a></li></ul></li>
+            <li><a href="doctors.html">Doctors</a></li><li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-right"><a href="tel:5551234567" class="nav-phone"><i class="fas fa-phone"></i> (555) 123-4567</a></div>
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<div class="modal-overlay" id="appointmentModal" style="display:none;"></div>
+<div class="toast" id="toast"></div>
+
+<section class="page-hero">
+    <div class="container"><div class="page-hero-content">
+        <div class="hero-badge"><i class="fas fa-shield-alt"></i> Legal</div>
+        <h1>Privacy Policy</h1>
+        <p>How we collect, use, and protect your personal health information.</p>
+    </div></div>
+</section>
+
+<section class="policy-section">
+    <div class="container">
+        <div class="policy-layout">
+            <nav class="policy-nav">
+                <h4>Contents</h4>
+                <a href="#info-collect">1. Information We Collect</a>
+                <a href="#how-use">2. How We Use Information</a>
+                <a href="#hipaa">3. HIPAA Compliance</a>
+                <a href="#sharing">4. Information Sharing</a>
+                <a href="#security">5. Security</a>
+                <a href="#your-rights">6. Your Rights</a>
+                <a href="#cookies">7. Cookies</a>
+                <a href="#children">8. Children's Privacy</a>
+                <a href="#contact-policy">9. Contact Us</a>
+            </nav>
+            <div class="policy-content">
+                <span class="last-updated"><i class="fas fa-calendar-alt"></i> Last updated: January 1, 2024</span>
+                <p>MediCare Excellence ("we," "our," or "us") is committed to protecting the privacy and security of your personal and health information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.</p>
+
+                <h2 id="info-collect">1. Information We Collect</h2>
+                <p>We may collect the following types of information:</p>
+                <ul>
+                    <li>Personal identifiers (name, date of birth, contact details)</li>
+                    <li>Health and medical information you provide when booking appointments</li>
+                    <li>Insurance and billing information</li>
+                    <li>Website usage data (pages visited, time spent, browser type)</li>
+                    <li>Communications you send us via forms or email</li>
+                </ul>
+
+                <h2 id="how-use">2. How We Use Information</h2>
+                <p>We use collected information to provide and improve our healthcare services, process appointment bookings, communicate regarding your care, comply with legal obligations, and analyze website usage to enhance user experience.</p>
+
+                <h2 id="hipaa">3. HIPAA Compliance</h2>
+                <p>As a covered healthcare entity, MediCare Excellence complies fully with the Health Insurance Portability and Accountability Act (HIPAA). Your Protected Health Information (PHI) is handled with the highest standards of privacy and security as required by federal law. Our Notice of Privacy Practices is available at all our facilities and upon request.</p>
+
+                <h2 id="sharing">4. Information Sharing</h2>
+                <p>We do not sell your personal information. We may share information with treating physicians and care team members, billing and insurance processors, legally required government or regulatory bodies, and third-party service providers who assist our operations under strict confidentiality agreements.</p>
+
+                <h2 id="security">5. Security</h2>
+                <p>We implement industry-standard administrative, technical, and physical safeguards to protect your information, including encryption in transit and at rest, access controls, regular security audits, and staff training on data protection.</p>
+
+                <h2 id="your-rights">6. Your Rights</h2>
+                <p>You have the right to access, correct, or request deletion of your personal information. You may also request restrictions on how we use your PHI, receive an accounting of disclosures, and opt out of certain communications. To exercise these rights, contact our Privacy Officer at privacy@medicare-excellence.com.</p>
+
+                <h2 id="cookies">7. Cookies & Tracking</h2>
+                <p>Our website uses cookies and similar tracking technologies to improve functionality, analyze traffic, and personalize content. You may control cookie settings through your browser preferences. Disabling certain cookies may limit website functionality.</p>
+
+                <h2 id="children">8. Children's Privacy</h2>
+                <p>Our website is not directed at children under 13. We do not knowingly collect personal information from children without verifiable parental consent. If you believe we have inadvertently collected such information, please contact us immediately.</p>
+
+                <h2 id="contact-policy">9. Contact Us</h2>
+                <p>For questions about this Privacy Policy, please contact our Privacy Officer:<br>
+                <strong>Email:</strong> privacy@medicare-excellence.com<br>
+                <strong>Phone:</strong> (555) 123-4567<br>
+                <strong>Mail:</strong> Privacy Officer, MediCare Excellence, 123 Medical Plaza Drive, Healthcare City, HC 12345</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-top"><div class="container"><div class="footer-grid">
+        <div class="footer-brand"><a href="../index.html" class="logo"><div class="logo-icon"><i class="fas fa-heartbeat"></i></div><span>MediCare <em>Excellence</em></span></a><p>Providing exceptional healthcare since 1995.</p></div>
+        <div class="footer-col"><h4>Legal</h4><ul><li><a href="privacy.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li><li><a href="terms.html"><i class="fas fa-chevron-right"></i> Terms of Service</a></li></ul></div>
+    </div></div></div>
+    <div class="footer-bottom"><div class="container"><p>&copy; 2024 MediCare Excellence. All rights reserved.</p></div></div>
+</footer>
+<button class="scroll-top" id="scrollTop" onclick="scrollToTop()"><i class="fas fa-chevron-up"></i></button>
+<script src="../script.js"></script>
+</body>
+</html>

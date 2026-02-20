@@ -1,0 +1,162 @@
+// ============================================================
+// MEDIPORTAL — DOCTORS DATA
+// ============================================================
+
+const DOCTORS_DATA = [
+    {
+        id: 1,
+        name: "Dr. Aditya Kumar",
+        specialty: "Interventional Cardiology",
+        department: "cardiology",
+        experience: 18,
+        patients: 4200,
+        rating: 4.9,
+        reviews: 312,
+        image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80",
+        languages: ["English", "Hindi"],
+        available: true
+    },
+    {
+        id: 2,
+        name: "Dr. Priya Sharma",
+        specialty: "Cardiac Electrophysiology",
+        department: "cardiology",
+        experience: 14,
+        patients: 3100,
+        rating: 4.8,
+        reviews: 228,
+        image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&q=80",
+        languages: ["English", "Tamil"],
+        available: true
+    },
+    {
+        id: 3,
+        name: "Dr. Rajan Chen",
+        specialty: "Stroke & Cerebrovascular",
+        department: "neurology",
+        experience: 20,
+        patients: 5000,
+        rating: 4.9,
+        reviews: 401,
+        image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&q=80",
+        languages: ["English", "Mandarin"],
+        available: true
+    },
+    {
+        id: 4,
+        name: "Dr. Meena Patel",
+        specialty: "Epilepsy & Neurophysiology",
+        department: "neurology",
+        experience: 12,
+        patients: 2800,
+        rating: 4.7,
+        reviews: 194,
+        image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80",
+        languages: ["English", "Gujarati"],
+        available: false
+    },
+    {
+        id: 5,
+        name: "Dr. Suresh Nair",
+        specialty: "Joint Replacement Surgery",
+        department: "orthopedics",
+        experience: 22,
+        patients: 6200,
+        rating: 4.9,
+        reviews: 517,
+        image: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&q=80",
+        languages: ["English", "Malayalam"],
+        available: true
+    },
+    {
+        id: 6,
+        name: "Dr. Ananya Roy",
+        specialty: "Sports Medicine & Spine",
+        department: "orthopedics",
+        experience: 10,
+        patients: 2200,
+        rating: 4.8,
+        reviews: 176,
+        image: "https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=400&q=80",
+        languages: ["English", "Bengali"],
+        available: true
+    },
+    {
+        id: 7,
+        name: "Dr. Kavya Reddy",
+        specialty: "Neonatology & Pediatrics",
+        department: "pediatrics",
+        experience: 15,
+        patients: 4800,
+        rating: 4.9,
+        reviews: 389,
+        image: "https://images.unsplash.com/photo-1607990283143-e81e7a2c9349?w=400&q=80",
+        languages: ["English", "Telugu"],
+        available: true
+    },
+    {
+        id: 8,
+        name: "Dr. Arjun Singh",
+        specialty: "Pediatric Cardiology",
+        department: "pediatrics",
+        experience: 9,
+        patients: 1900,
+        rating: 4.7,
+        reviews: 142,
+        image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&q=80",
+        languages: ["English", "Punjabi"],
+        available: true
+    },
+    {
+        id: 9,
+        name: "Dr. Lakshmi Iyer",
+        specialty: "Internal Medicine",
+        department: "general",
+        experience: 25,
+        patients: 9800,
+        rating: 4.8,
+        reviews: 623,
+        image: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=400&q=80",
+        languages: ["English", "Tamil", "Kannada"],
+        available: true
+    },
+    {
+        id: 10,
+        name: "Dr. Vikram Malhotra",
+        specialty: "Family Medicine",
+        department: "general",
+        experience: 17,
+        patients: 7300,
+        rating: 4.6,
+        reviews: 482,
+        image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80&fp-y=0.3",
+        languages: ["English", "Hindi", "Urdu"],
+        available: false
+    },
+    {
+        id: 11,
+        name: "Dr. Sanjana Menon",
+        specialty: "Preventive Cardiology",
+        department: "cardiology",
+        experience: 11,
+        patients: 2600,
+        rating: 4.7,
+        reviews: 203,
+        image: "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=400&q=80",
+        languages: ["English", "Malayalam"],
+        available: true
+    },
+    {
+        id: 12,
+        name: "Dr. Rahul Kapoor",
+        specialty: "Neurosurgery",
+        department: "neurology",
+        experience: 16,
+        patients: 3500,
+        rating: 4.8,
+        reviews: 267,
+        image: "https://images.unsplash.com/photo-1600486913747-55e5470d6f40?w=400&q=80",
+        languages: ["English", "Hindi"],
+        available: true
+    }
+];
