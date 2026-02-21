@@ -100,11 +100,12 @@
                     <li><a href="general-medicine.html"><i class="fas fa-stethoscope"></i> General Medicine</a></li>
                 </ul>
             </li>
-            <li><a href="#doctors">Doctors</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="pages/doctors.html">Doctors</a></li>
+            <li><a href="pages/contact.html">Contact</a></li>
         </ul>
         <div class="nav-right">
             <a href="tel:5551234567" class="nav-phone"><i class="fas fa-phone"></i> (555) 123-4567</a>
+            <button onclick="MediSearch.open()" class="search-toggle-btn" title="Search (Ctrl+K)"><i class="fas fa-search"></i></button>
             <button class="btn-primary" onclick="openModal()">Book Appointment</button>
         </div>
         <button class="hamburger" id="hamburger" onclick="toggleMenu()">
@@ -191,7 +192,7 @@
                     <span>Available Today</span>
                 </div>
             </a>
-            <a href="#doctors" class="quick-card">
+            <a href="pages/doctors.html" class="quick-card">
                 <div class="quick-icon"><i class="fas fa-user-md"></i></div>
                 <div class="quick-text">
                     <strong>Find a Doctor</strong>
@@ -631,9 +632,9 @@
                     <ul>
                         <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
                         <li><a href="#departments"><i class="fas fa-chevron-right"></i> Departments</a></li>
-                        <li><a href="#doctors"><i class="fas fa-chevron-right"></i> Our Doctors</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Careers</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> News & Blog</a></li>
+                        <li><a href="pages/doctors.html"><i class="fas fa-chevron-right"></i> Our Doctors</a></li>
+                        <li><a href="pages/careers.html"><i class="fas fa-chevron-right"></i> Careers</a></li>
+                        <li><a href="pages/blog.html"><i class="fas fa-chevron-right"></i> News & Blog</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -659,7 +660,7 @@
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
-                            <span>info@medicare.com</span>
+                            <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="670e090108270a02030e040615024904080a">[email&#160;protected]</a></span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-clock"></i>
@@ -674,7 +675,7 @@
         <div class="container">
             <p>&copy; 2024 MediCare Excellence. All rights reserved.</p>
             <div class="footer-bottom-links">
-                <a href="#">Privacy Policy</a>
+                <a href="pages/privacy.html">Privacy Policy</a>
                 <a href="#">Terms of Service</a>
                 <a href="#">Sitemap</a>
             </div>
@@ -683,10 +684,9 @@
 </footer>
 
 <!-- SCROLL TO TOP -->
-<button class="scroll-top" id="scrollTop" onclick="scrollToTop()">
-    <i class="fas fa-chevron-up"></i>
-</button>
+<button class="scroll-top" id="scrollTop" onclick="scrollToTop()"><i class="fas fa-chevron-up"></i></button>
 
 <script src="script.js"></script>
+<script src="js/search.js"></script>
 </body>
 </html>
